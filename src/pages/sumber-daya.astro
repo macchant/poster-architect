@@ -1,0 +1,174 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const resources = [
+  {
+    category: 'Panduan Hukum',
+    icon: 'fa-gavel',
+    color: 'bg-emerald-100 text-emerald-700',
+    border: 'border-emerald-200',
+    items: [
+      { title: 'Panduan Hak Mantan Narapidana di Indonesia', type: 'PDF', pages: 24, url: '#' },
+      { title: 'Prosedur Pengurusan KTP & Dokumen Setelah Bebas', type: 'PDF', pages: 12, url: '#' },
+      { title: 'Memahami UU No. 12 Tahun 1995 tentang Pemasyarakatan', type: 'PDF', pages: 18, url: '#' },
+      { title: 'Hak Kerja Mantan Narapidana: Yang Perlu Anda Tahu', type: 'Artikel', pages: null, url: '#' },
+    ],
+  },
+  {
+    category: 'Pengembangan Keterampilan',
+    icon: 'fa-tools',
+    color: 'bg-blue-100 text-blue-700',
+    border: 'border-blue-200',
+    items: [
+      { title: 'Kursus Gratis: Dasar-Dasar Las Listrik (Video Series)', type: 'Video', pages: null, url: '#' },
+      { title: 'Panduan Memulai Usaha dengan Modal Minim', type: 'PDF', pages: 32, url: '#' },
+      { title: 'Belajar MS Excel dari Nol untuk Peluang Kerja', type: 'PDF', pages: 45, url: '#' },
+      { title: 'Tips Wawancara Kerja untuk Mantan Narapidana', type: 'Artikel', pages: null, url: '#' },
+    ],
+  },
+  {
+    category: 'Kesehatan Mental',
+    icon: 'fa-heart',
+    color: 'bg-rose-100 text-rose-700',
+    border: 'border-rose-200',
+    items: [
+      { title: 'Mengatasi Stigma Diri Sendiri Setelah Bebas', type: 'PDF', pages: 20, url: '#' },
+      { title: 'Teknik Grounding: Mengelola Kecemasan Sehari-hari', type: 'PDF', pages: 14, url: '#' },
+      { title: 'Membangun Relasi Sosial yang Sehat', type: 'Video', pages: null, url: '#' },
+      { title: 'Pentingnya Kesehatan Mental dan Cara Menjaganya', type: 'Artikel', pages: null, url: '#' },
+    ],
+  },
+  {
+    category: 'Kesempatan Kerja',
+    icon: 'fa-briefcase',
+    color: 'bg-violet-100 text-violet-700',
+    border: 'border-violet-200',
+    items: [
+      { title: 'Daftar 50+ Perusahaan yang Terbuka untuk Mantan Narapidana', type: 'PDF', pages: 15, url: '#' },
+      { title: 'Cara Membuat CV yang Menonjolkan Keahlian Anda', type: 'PDF', pages: 10, url: '#' },
+      { title: 'Peluang Kerja di Sektor Informal yang Potensial', type: 'Artikel', pages: null, url: '#' },
+      { title: 'Mengenal Program Kartu Prakerja untuk Mantan Narapidana', type: 'Artikel', pages: null, url: '#' },
+    ],
+  },
+  {
+    category: 'Komunitas & Dukungan',
+    icon: 'fa-hands-helping',
+    color: 'bg-amber-100 text-amber-700',
+    border: 'border-amber-200',
+    items: [
+      { title: 'Direktori Organisasi Sosial untuk Eks Narapidana', type: 'PDF', pages: 28, url: '#' },
+      { title: 'Cara Bergabung dengan Komunitas Sobat Berbagi', type: 'Artikel', pages: null, url: '#' },
+      { title: 'Kisah Inspiratif: 10 Orang yang Berhasil Bangkit', type: 'PDF', pages: 36, url: '#' },
+      { title: 'Cara Mendapatkan Bantuan Hukum Pro Bono', type: 'Artikel', pages: null, url: '#' },
+    ],
+  },
+];
+
+const externalLinks = [
+  { name: 'Open Library', url: 'https://openlibrary.org', desc: 'Koleksi 20+ juta buku digital gratis', icon: 'fa-book' },
+  { name: 'Internet Archive', url: 'https://archive.org', desc: 'Arsip digital universal untuk akses pengetahuan', icon: 'fa-archive' },
+  { name: 'Kemendikbud - Ruangguru', url: 'https://www.ruangguru.com', desc: 'Platform belajar online gratis', icon: 'fa-graduation-cap' },
+  { name: 'BNN - Program Rehabilitasi', url: 'https://bnn.go.id', desc: 'Informasi rehabilitasi dan reintegrasi', icon: 'fa-medkit' },
+];
+---
+
+<Layout title="Sumber Daya" description="Kumpulan panduan, video, dan artikel gratis untuk mantan narapidana Indonesia — dari hukum hingga keterampilan kerja.">
+
+  <!-- Header -->
+  <section class="bg-gradient-to-br from-forest-700 via-forest-600 to-brand-600 text-white py-20 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl translate-x-1/2 -translate-y-1/2"></div>
+      <div class="absolute bottom-0 left-0 w-72 h-72 bg-white rounded-full blur-3xl -translate-x-1/2 translate-y-1/2"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-6 text-center">
+      <div class="w-20 h-20 bg-white/20 backdrop-blur rounded-2xl flex items-center justify-center mx-auto mb-6">
+        <i class="fas fa-folder-open text-white text-3xl"></i>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Sumber Daya</h1>
+      <p class="text-white/80 text-lg max-w-2xl mx-auto">
+        Panduan praktis, video pembelajaran, dan artikel yang dirancang untuk membantu Anda membangun kehidupan baru — semua gratis.
+      </p>
+    </div>
+  </section>
+
+  <!-- Resource Categories -->
+  <section class="py-20 bg-warm-50">
+    <div class="max-w-7xl mx-auto px-6 space-y-12">
+      {resources.map((section) => (
+        <div class="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden">
+          <div class="flex items-center gap-4 px-8 py-6 border-b border-gray-100 bg-warm-50">
+            <div class={`w-12 h-12 ${section.color} rounded-xl flex items-center justify-center flex-shrink-0`}>
+              <i class={`fas ${section.icon} text-xl`}></i>
+            </div>
+            <h2 class="text-xl font-bold text-gray-900">{section.category}</h2>
+            <span class="ml-auto text-sm text-gray-400">{section.items.length} sumber</span>
+          </div>
+          <div class="divide-y divide-gray-50">
+            {section.items.map((item) => (
+              <a href={item.url} class="flex items-center gap-4 px-8 py-5 hover:bg-brand-50 transition-colors group">
+                <div class="w-10 h-10 bg-brand-50 group-hover:bg-brand-100 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors">
+                  <i class={`fas ${item.type === 'PDF' ? 'fa-file-pdf text-brand-600' : item.type === 'Video' ? 'fa-play-circle text-sky-600' : 'fa-newspaper text-forest-600'} text-lg`}></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <p class="font-semibold text-gray-900 text-sm group-hover:text-brand-700 transition-colors truncate">{item.title}</p>
+                  <div class="flex items-center gap-3 mt-1">
+                    <span class={`text-xs font-semibold px-2 py-0.5 rounded-full ${
+                      item.type === 'PDF' ? 'bg-rose-50 text-rose-600' :
+                      item.type === 'Video' ? 'bg-sky-50 text-sky-600' :
+                      'bg-emerald-50 text-emerald-600'
+                    }`}>{item.type}</span>
+                    {item.pages && <span class="text-xs text-gray-400">{item.pages} halaman</span>}
+                  </div>
+                </div>
+                <i class="fas fa-arrow-right text-gray-300 group-hover:text-brand-500 group-hover:translate-x-1 transition-all"></i>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- External Links -->
+  <section class="py-20 bg-white border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <span class="tag bg-sky-100 text-sky-700 mb-4">🔗 Tautan Eksternal</span>
+        <h2 class="text-3xl font-extrabold text-gray-900 mb-3">Platform Lain yang Mungkin Berguna</h2>
+        <p class="text-gray-500 max-w-lg mx-auto">Sumber daya tambahan dari mitra dan organisasi terpercaya kami.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+        {externalLinks.map((link) => (
+          <a href={link.url} target="_blank" rel="noopener noreferrer"
+             class="group flex flex-col items-start p-6 bg-warm-50 rounded-2xl border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all">
+            <div class="w-12 h-12 bg-brand-100 group-hover:bg-brand-200 rounded-xl flex items-center justify-center mb-4 transition-colors">
+              <i class={`fas ${link.icon} text-brand-600 text-lg`}></i>
+            </div>
+            <p class="font-bold text-gray-900 text-sm mb-1 group-hover:text-brand-700 transition-colors">{link.name}</p>
+            <p class="text-gray-500 text-xs leading-relaxed">{link.desc}</p>
+            <i class="fas fa-external-link-alt text-gray-300 mt-auto pt-3 group-hover:text-brand-500 transition-colors"></i>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Admin CTA -->
+  <section class="py-16 bg-gradient-to-br from-gray-800 to-gray-900 text-white">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+        <i class="fas fa-database text-white text-2xl"></i>
+      </div>
+      <h2 class="text-2xl md:text-3xl font-extrabold mb-4">Kelola Koleksi Buku</h2>
+      <p class="text-white/70 mb-8 max-w-xl mx-auto">
+        Masuk ke panel admin untuk menambahkan, mengedit, atau menghapus buku dari katalog.
+      </p>
+      <a href="/admin"
+         class="inline-flex items-center gap-3 px-8 py-4 bg-white text-gray-800 font-bold rounded-full hover:shadow-2xl hover:-translate-y-1 transition-all">
+        <i class="fas fa-cog"></i>
+        Buka Panel Admin
+      </a>
+    </div>
+  </section>
+
+</Layout>

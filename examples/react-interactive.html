@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Interactive Examples - Belajar React</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- React 18 + Babel for JSX -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    :root {
+      --react-blue: #61dafb;
+      --react-dark: #20232a;
+      --bg-dark: #0d1117;
+      --bg-card: #161b22;
+      --bg-accent: #21262d;
+      --text-primary: #c9d1d9;
+      --text-secondary: #8b949e;
+      --border-color: #30363d;
+      --code-bg: #0d1117;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, var(--react-dark), var(--react-blue));
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      color: rgba(255,255,255,0.9);
+      font-size: 1.1rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      margin-top: 15px;
+    }
+
+    /* Navigation */
+    .nav-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 20px;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      justify-content: center;
+    }
+
+    .nav-tab {
+      padding: 10px 20px;
+      background: transparent;
+      border: 1px solid var(--react-blue);
+      color: var(--react-blue);
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+    }
+
+    .nav-tab:hover, .nav-tab.active {
+      background: var(--react-blue);
+      color: var(--react-dark);
+    }
+
+    /* Main Content */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      margin-bottom: 30px;
+      overflow: hidden;
+    }
+
+    .card-header {
+      background: var(--bg-accent);
+      padding: 20px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .card-header h2 {
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-header h2 i {
+      color: var(--react-blue);
+    }
+
+    .card-body {
+      padding: 30px;
+    }
+
+    /* Demo Area */
+    .demo-area {
+      background: var(--code-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 30px;
+      margin: 20px 0;
+    }
+
+    .demo-title {
+      color: var(--react-blue);
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* React Input */
+    .react-input {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--bg-dark);
+      border: 2px solid var(--react-blue);
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-size: 1rem;
+      outline: none;
+      transition: all 0.3s;
+      font-family: inherit;
+    }
+
+    .react-input:focus {
+      box-shadow: 0 0 0 4px rgba(97, 218, 251, 0.2);
+    }
+
+    .react-btn {
+      padding: 12px 24px;
+      background: linear-gradient(135deg, var(--react-blue), #4fa8c7);
+      color: var(--react-dark);
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-family: inherit;
+    }
+
+    .react-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(97, 218, 251, 0.3);
+    }
+
+    .react-btn-outline {
+      background: transparent;
+      border: 2px solid var(--react-blue);
+      color: var(--react-blue);
+    }
+
+    .react-btn-outline:hover {
+      background: var(--react-blue);
+      color: var(--react-dark);
+    }
+
+    .react-btn-danger {
+      background: linear-gradient(135deg, #e74c3c, #c0392b);
+      color: white;
+    }
+
+    /* Result Box */
+    .result-box {
+      background: rgba(97, 218, 251, 0.1);
+      border: 1px solid var(--react-blue);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 15px 0;
+    }
+
+    .result-label {
+      color: var(--react-blue);
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+    }
+
+    /* Counter */
+    .counter-demo {
+      text-align: center;
+    }
+
+    .counter-display {
+      font-size: 4rem;
+      font-weight: 800;
+      color: var(--react-blue);
+      margin: 20px 0;
+    }
+
+    .counter-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .counter-buttons .react-btn {
+      width: 60px;
+      height: 60px;
+      font-size: 1.5rem;
+    }
+
+    /* Todo */
+    .todo-list {
+      list-style: none;
+    }
+
+    .todo-item {
+      display: flex;
+      align-items: center;
+      padding: 12px;
+      background: var(--bg-dark);
+      border-radius: 8px;
+      margin-bottom: 10px;
+      transition: all 0.3s;
+    }
+
+    .todo-item:hover {
+      background: var(--bg-accent);
+    }
+
+    .todo-item input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      margin-right: 15px;
+      accent-color: var(--react-blue);
+    }
+
+    .todo-item.completed span {
+      text-decoration: line-through;
+      opacity: 0.5;
+    }
+
+    .todo-item span {
+      flex: 1;
+    }
+
+    .todo-item button {
+      background: none;
+      border: none;
+      color: #e74c3c;
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+
+    .todo-input-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .todo-input-group input {
+      flex: 1;
+    }
+
+    /* Form */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      background: var(--bg-dark);
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-size: 1rem;
+      font-family: inherit;
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    /* Error */
+    .error-msg {
+      color: #e74c3c;
+      font-size: 0.85rem;
+      margin-top: 5px;
+    }
+
+    /* Grid */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    /* Toggle */
+    .toggle-switch {
+      width: 60px;
+      height: 30px;
+      background: var(--border-color);
+      border-radius: 15px;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .toggle-switch.active {
+      background: var(--react-blue);
+    }
+
+    .toggle-switch::after {
+      content: '';
+      width: 24px;
+      height: 24px;
+      background: white;
+      border-radius: 50%;
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      transition: all 0.3s;
+    }
+
+    .toggle-switch.active::after {
+      left: 33px;
+    }
+
+    /* Badge */
+    .status-badge {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .status-badge.active {
+      background: rgba(97, 218, 251, 0.2);
+      color: var(--react-blue);
+    }
+
+    .status-badge.inactive {
+      background: rgba(255, 107, 107, 0.2);
+      color: #ff6b6b;
+    }
+
+    /* Code Block */
+    .code-block {
+      background: var(--code-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 20px;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      margin: 15px 0;
+    }
+
+    .code-block code {
+      color: var(--text-primary);
+    }
+
+    .keyword { color: #ff79c6; }
+    .string { color: #f1fa8c; }
+    .function { color: #50fa7b; }
+    .variable { color: #8be9fd; }
+    .comment { color: #6272a4; }
+    .number { color: #bd93f9; }
+
+    /* User Card */
+    .user-card {
+      background: var(--bg-dark);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .user-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--react-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 15px;
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--react-dark);
+    }
+
+    /* Tabs Component Demo */
+    .tabs-container {
+      display: flex;
+      gap: 5px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .tab-btn {
+      padding: 10px 20px;
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s;
+      font-family: inherit;
+    }
+
+    .tab-btn.active {
+      color: var(--react-blue);
+      border-bottom-color: var(--react-blue);
+    }
+
+    .tab-content {
+      padding: 20px;
+      background: var(--bg-dark);
+      border-radius: 8px;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 30px;
+      border-top: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-dark);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--react-blue);
+      border-radius: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 1.8rem;
+      }
+
+      .card-body {
+        padding: 20px;
+      }
+
+      .counter-display {
+        font-size: 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect, useMemo, useCallback, useRef } = React;
+
+    // === App Component ===
+    function App() {
+      const [activeTab, setActiveTab] = useState('basics');
+
+      const tabs = [
+        { id: 'basics', name: 'Basics', icon: 'fas fa-bolt' },
+        { id: 'counter', name: 'useState', icon: 'fas fa-plus-minus' },
+        { id: 'effect', name: 'useEffect', icon: 'fas fa-sync' },
+        { id: 'memo', name: 'useMemo', icon: 'fas fa-database' },
+        { id: 'callback', name: 'useCallback', icon: 'fas fa-link' },
+        { id: 'todo', name: 'Todo App', icon: 'fas fa-list-check' },
+        { id: 'form', name: 'Form', icon: 'fas fa-edit' },
+        { id: 'conditional', name: 'Conditional', icon: 'fas fa-code-branch' }
+      ];
+
+      return (
+        <div>
+          {/* Header */}
+          <header className="header">
+            <h1>⚛️ React Interactive Examples</h1>
+            <p>Belajar React dengan contoh interaktif yang bisa langsung dicoba!</p>
+            <span className="badge">React 18 - Hooks Edition</span>
+          </header>
+
+          {/* Navigation */}
+          <nav className="nav-tabs">
+            {tabs.map(tab => (
+              <button
+                key={tab.id}
+                className={`nav-tab ${activeTab === tab.id ? 'active' : ''}`}
+                onClick={() => setActiveTab(tab.id)}
+              >
+                <i className={tab.icon}></i> {tab.name}
+              </button>
+            ))}
+          </nav>
+
+          {/* Main Content */}
+          <main className="container">
+            {/* 1. Basics */}
+            {activeTab === 'basics' && <BasicsSection />}
+            {/* 2. Counter */}
+            {activeTab === 'counter' && <CounterSection />}
+            {/* 3. useEffect */}
+            {activeTab === 'effect' && <EffectSection />}
+            {/* 4. useMemo */}
+            {activeTab === 'memo' && <MemoSection />}
+            {/* 5. useCallback */}
+            {activeTab === 'callback' && <CallbackSection />}
+            {/* 6. Todo */}
+            {activeTab === 'todo' && <TodoSection />}
+            {/* 7. Form */}
+            {activeTab === 'form' && <FormSection />}
+            {/* 8. Conditional */}
+            {activeTab === 'conditional' && <ConditionalSection />}
+          </main>
+
+          {/* Footer */}
+          <footer className="footer">
+            <p>React Interactive Examples - Belajar dengan Praktik</p>
+            <p style={{ marginTop: '10px' }}>
+              <i className="fab fa-react" style={{ color: 'var(--react-blue)' }}></i> React 18
+            </p>
+          </footer>
+        </div>
+      );
+    }
+
+    // === 1. Basics Section ===
+    function BasicsSection() {
+      // JSX = JavaScript + HTML
+      const title = 'Belajar React';
+      const count = 42;
+      const isActive = true;
+
+      return (
+        <div className="card">
+          <div className="card-header">
+            <h2><i className="fas fa-bolt"></i> JSX & Component Basics</h2>
+          </div>
+          <div className="card-body">
+            <div className="demo-area">
+              <div className="demo-title">
+                <i className="fas fa-play"></i> Live Demo: JSX & Data Binding
+              </div>
+
+              <div className="result-box">
+                <div className="result-label">String Interpolation:</div>
+                <h2 style={{ color: 'var(--react-blue)', fontSize: '1.8rem' }}>{title}</h2>
+              </div>
+
+              <div className="grid-2">
+                <div className="result-box">
+                  <div className="result-label">Number:</div>
+                  <div style={{ fontSize: '2rem', fontWeight: 'bold', color: 'var(--react-blue)' }}>{count}</div>
+                </div>
+                <div className="result-box">
+                  <div className="result-label">Boolean (ternary):</div>
+                  <span className={`status-badge ${isActive ? 'active' : 'inactive'}`}>
+                    {isActive ? 'Aktif' : 'Nonaktif'}
+                  </span>
+                </div>
+              </div>
+
+              <div className="result-box">
+                <div className="result-label">Expression:</div>
+                <p>Count + 10 = <strong style={{ color: 'var(--react-blue)' }}>{count + 10}</strong></p>
+                <p>Array length: <strong style={{ color: 'var(--react-blue)' }}>{['a', 'b', 'c'].length}</strong></p>
+              </div>
+
+              {/* Component Composition */}
+              <div style={{ marginTop: '20px' }}>
+                <div className="result-label">Component Composition:</div>
+                <UserCard name="Budi Santoso" role="Admin" />
+              </div>
+            </div>
+
+            <div className="code-block">
+              <code>
+<span className="comment">{/* JSX = JavaScript + HTML */}</span>
+<span className="keyword">const</span> App = () => {
+  <span className="keyword">const</span> title = <span className="string">'Belajar React'</span>
+  <span className="keyword">const</span> count = <span className="number">42</span>
+  <span className="keyword">const</span> isActive = <span className="keyword">true</span>
+
+  <span className="keyword">return</span> (
+    <span className="string">&lt;div&gt;
+      &lt;h1&gt;{title}&lt;/h1&gt;
+      &lt;p&gt;Count: {count}&lt;/p&gt;
+      &lt;span&gt;{isActive ? 'Aktif' : 'Nonaktif'}&lt;/span&gt;
+    &lt;/div&gt;</span>
+  )
+}
+
+<span className="comment">{/* ClassName instead of Class */}</span>
+<span className="keyword">const</span> element = <span className="string">&lt;div className="container"&gt;</span>
+
+<span className="comment">{/* Self-closing tags */}</span>
+<span className="keyword">const</span> input = <span className="string">&lt;input /&gt;</span>
+              </code>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // === 2. Counter Section (useState) ===
+    function CounterSection() {
+      const [count, setCount] = useState(0);
+      const [step, setStep] = useState(1);
+
+      return (
+        <div className="card">
+          <div className="card-header">
+            <h2><i className="fas fa-plus-minus"></i> useState Hook</h2>
+          </div>
+          <div className="card-body">
+            <div className="demo-area">
+              <div className="demo-title">
+                <i className="fas fa-play"></i> Live Demo: useState untuk Counter
+              </div>
+
+              <div className="counter-demo">
+                <p style={{ color: 'var(--text-secondary)' }}>Klik tombol untuk mengubah nilai</p>
+                <div className="counter-display">{count}</div>
+
+                <div className="counter-buttons">
+                  <button className="react-btn" onClick={() => setCount(c => c - step)}>
+                    <i className="fas fa-minus"></i>
+                  </button>
+                  <button className="react-btn react-btn-danger" onClick={() => setCount(0)}>
+                    <i className="fas fa-redo"></i>
+                  </button>
+                  <button className="react-btn" onClick={() => setCount(c => c + step)}>
+                    <i className="fas fa-plus"></i>
+                  </button>
+                </div>
+
+                <div style={{ marginTop: '30px' }}>
+                  <p style={{ color: 'var(--text-secondary)' }}>Step: {step}</p>
+                  <input
+                    type="range"
+                    min="1"
+                    max="10"
+                    value={step}
+                    onChange={(e) => setStep(Number(e.target.value))}
+                    style={{ width: '200px', accentColor: 'var(--react-blue)' }}
+                  />
+                </div>
+
+                <div style={{ marginTop: '20px' }}>
+                  <p style={{ color: 'var(--text-secondary)' }}>Double: <strong style={{ color: 'var(--react-blue)' }}>{count * 2}</strong></p>
+                </div>
+              </div>
+            </div>
+
+            <div className="code-block">
+              <code>
+<span className="keyword">const</span> [count, setCount] = <span className="function">useState</span>(<span className="number">0</span>)
+
+<span className="comment">// Update dengan nilai baru</span>
+setCount(<span className="number">5</span>)
+
+<span className="comment">// Update dengan function (lebih aman)</span>
+setCount(c => c + <span className="number">1</span>)
+
+<span className="comment">// Multiple state</span>
+<span className="keyword">const</span> [name, setName] = <span className="function">useState</span>(<span className="string">''</span>)
+<span className="keyword">const</span> [loading, setLoading] = <span className="function">useState</span>(<span className="keyword">false</span>)
+              </code>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // === 3. useEffect Section ===
+    function EffectSection() {
+      const [time, setTime] = useState(new Date().toLocaleTimeString());
+      const [count, setCount] = useState(0);
+      const [input, setInput] = useState('');
+      const [searchLog, setSearchLog] = useState([]);
+
+      // Effect 1: Update time every second
+      useEffect(() => {
+        const timer = setInterval(() => {
+          setTime(new Date().toLocaleTimeString());
+        }, 1000);
+        return () => clearInterval(timer);
+      }, []);
+
+      // Effect 2: Log search changes
+      useEffect(() => {
+        if (input) {
+          setSearchLog(prev => [...prev.slice(-4), { time: new Date().toLocaleTimeString(), query: input }]);
+        }
+      }, [input]);
+
+      return (
+        <div className="card">
+          <div className="card-header">
+            <h2><i className="fas fa-sync"></i> useEffect Hook</h2>
+          </div>
+          <div className="card-body">
+            <div className="demo-area">
+              <div className="demo-title">
+                <i className="fas fa-play"></i> Live Demo: useEffect Lifecycle
+              </div>
+
+              {/* Live Clock */}
+              <div className="result-box">
+                <div className="result-label">Live Clock (setInterval):</div>
+                <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: 'var(--react-blue)', textAlign: 'center' }}>
+                  {time}
+                </div>
+              </div>
+
+              {/* Document Title */}
+              <div className="result-box">
+                <div className="result-label">Effect: Update Document Title</div>
+                <p>Count: <strong>{count}</strong></p>
+                <button className="react-btn react-btn-outline" onClick={() => setCount(c => c + 1)}>
+                  + Increment
+                </button>
+              </div>
+
+              {/* Debounced Search */}
+              <div className="result-box">
+                <div className="result-label">Effect: Debounced Search</div>
+                <input
+                  type="text"
+                  className="react-input"
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  placeholder="Ketik untuk search..."
+                />
+                <div style={{ marginTop: '10px' }}>
+                  {searchLog.map((log, i) => (
+                    <div key={i} style={{ padding: '5px', fontSize: '0.9rem', borderBottom: '1px solid var(--border-color)' }}>
+                      <span style={{ color: 'var(--react-blue)' }}>{log.time}</span>
+                      <span style={{ marginLeft: '10px' }}>Search: "{log.query}"</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="code-block">
+              <code>
+<span className="comment">// Run on mount + when dependencies change</span>
+<span className="function">useEffect</span>(() => {
+  console.<span className="function">log</span>(<span className="string">'Component mounted or updated'</span>)
+}, [dependency])
+
+<span className="comment">// Run once on mount (empty array)</span>
+<span className="function">useEffect</span>(() => {
+  fetchData()
+}, [])
+
+<span className="comment">// Cleanup function</span>
+<span className="function">useEffect</span>(() => {
+  <span className="keyword">const</span> timer = setInterval(() => {}, <span className="number">1000</span>)
+  <span className="keyword">return</span> () => clearInterval(timer) <span className="comment">// Cleanup on unmount</span>
+}, [])
+              </code>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // === 4. useMemo Section ===
+    function MemoSection() {
+      const [count, setCount] = useState(0);
+      const [search, setSearch] = useState('');
+      const [renderCount, setRenderCount] = useState(0);
+
+      const items = ['Laptop', 'Keyboard', 'Mouse', 'Monitor', 'Headset', 'Webcam'];
+
+      // useMemo: cache result, only recalculate when deps change
+      const filteredItems = useMemo(() => {
+        setRenderCount(c => c + 1);
+        return items.filter(item => item.toLowerCase().includes(search.toLowerCase()));
+      }, [search]);
+
+      return (
+        <div className="card">
+          <div className="card-header">
+            <h2><i className="fas fa-database"></i> useMemo Hook</h2>
+          </div>
+          <div className="card-body">
+            <div className="demo-area">
+              <div className="demo-title">
+                <i className="fas fa-play"></i> Live Demo: Memoized Computations
+              </div>
+
+              <div className="result-box">
+                <div className="result-label">Filter Render Count (memoized):</div>
+                <span style={{ fontSize: '2rem', fontWeight: 'bold', color: 'var(--react-blue)' }}>{renderCount}</span>
+                <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '5px' }}>
+                  Tidak berubah saat Counter di-update
+                </p>
+              </div>
+
+              <div className="form-group">
+                <label>Counter (tidak affect filter):</label>
+                <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                  <button className="react-btn react-btn-outline" onClick={() => setCount(c => c - 1)}>-</button>
+                  <strong style={{ fontSize: '1.5rem', color: 'var(--react-blue)' }}>{count}</strong>
+                  <button className="react-btn react-btn-outline" onClick={() => setCount(c => c + 1)}>+</button>
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label>Search (memoinput filter):</label>
+                <input
+                  type="text"
+                  className="react-input"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  placeholder="Ketik nama item..."
+                />
+              </div>
+
+              <div className="result-box">
+                <div className="result-label">Filtered Items ({filteredItems.length}):</div>
+                <ul style={{ listStyle: 'none', marginTop: '10px' }}>
+                  {filteredItems.map((item, i) => (
+                    <li key={i} style={{ padding: '8px', borderBottom: '1px solid var(--border-color)' }}>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div className="code-block">
+              <code>
+<span className="comment">// useMemo: cache expensive computation</span>
+<span className="keyword">const</span> filteredItems = <span className="function">useMemo</span>(() => {
+  console.<span className="function">log</span>(<span className="string">'Filtering...'</span>) <span className="comment">// Only runs when deps change</span>
+  <span className="keyword">return</span> items.<span className="function">filter</span>(item =>
+    item.<span className="function">toLowerCase</span>().<span className="function">includes</span>(search.<span className="function">toLowerCase</span>())
+  )
+}, [search])
+
+<span className="comment">// vs regular function - runs every render</span>
+<span className="keyword">const</span> getFiltered = () => items.<span className="function">filter</span>(...)
+              </code>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // === 5. useCallback Section ===
+    function CallbackSection() {
+      const [count, setCount] = useState(0);
+      const [callbackLog, setCallbackLog] = useState([]);
+
+      // useCallback: memoize function reference
+      const handleClick = useCallback((id) => {
+        setCallbackLog(prev => [...prev.slice(-3), { time: new Date().toLocaleTimeString(), id }]);
+      }, []);
+
+      return (
+        <div className="card">
+          <div className="card-header">
+            <h2><i className="fas fa-link"></i> useCallback Hook</h2>
+          </div>
+          <div className="card-body">
+            <div className="demo-area">
+              <div className="demo-title">
+                <i className="fas fa-play"></i> Live Demo: Memoized Functions
+              </div>
+
+              <div className="result-box">
+                <div className="result-label">Counter (rerenders parent):</div>
+                <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '15px' }}>
+                  <button className="react-btn" onClick={() => setCount(c => c + 1)}>Re-render Parent</button>
+                  <span style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--react-blue)' }}>{count}</span>
+                </div>
+                <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+                  useCallback membuat function tidak dibuat ulang setiap render
+                </p>
+              </div>
+
+              <div style={{ display: 'flex', gap: '10px', marginBottom: '20px' }}>
+                {[1, 2, 3].map(id => (
+                  <button key={id} className="react-btn react-btn-outline" onClick={() => handleClick(id)}>
+                    Click ID {id}
+                  </button>
+                ))}
+              </div>
+
+              <div className="result-box">
+                <div className="result-label">Callback Log:</div>
+                {callbackLog.map((log, i) => (
+                  <div key={i} style={{ padding: '5px', fontSize: '0.9rem', borderBottom: '1px solid var(--border-color)' }}>
+                    <span style={{ color: 'var(--react-blue)' }}>{log.time}</span>
+                    <span style={{ marginLeft: '10px' }}>Button ID: {log.id}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="code-block">
+              <code>
+<span className="comment">// useCallback: memoize function reference</span>
+<span className="keyword">const</span> handleClick = <span className="function">useCallback</span>((id) => {
+  console.<span className="function">log</span>(id)
+  <span className="comment">// Function created once, reused every render</span>
+}, []) <span className="comment">// Empty deps = never changes</span>
+
+<span className="comment">// Good for passing to child components</span>
+<span className="string">&lt;Child onClick={handleClick} /&gt;</span>
+<span className="comment">// Child won't re-render if handleClick is stable</span>
+              </code>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // === 6. Todo Section ===
+    function TodoSection() {
+      const [todos, setTodos] = useState([
+        { id: 1, text: 'Belajar React Hooks', done: true },
+        { id: 2, text: 'Buat project pertama', done: false },
+        { id: 3, text: 'Deploy ke production', done: false }
+      ]);
+      const [input, setInput] = useState('');
+      const [filter, setFilter] = useState('all');
+
+      const addTodo = () => {
+        if (!input.trim()) return;
+        setTodos([...todos, { id: Date.now(), text: input, done: false }]);
+        setInput('');
+      };
+
+      const toggleTodo = (id) => {
+        setTodos(todos.map(t => t.id === id ? { ...t, done: !t.done } : t));
+      };
+
+      const deleteTodo = (id) => {
+        setTodos(todos.filter(t => t.id !== id));
+      };
+
+      const filteredTodos = todos.filter(t => {
+        if (filter === 'active') return !t.done;
+        if (filter === 'completed') return t.done;
+        return t;
+      });
+
+      return (
+        <div className="card">
+          <div className="card-header">
+            <h2><i className="fas fa-list-check"></i> Todo App dengan useState</h2>
+          </div>
+          <div className="card-body">
+            <div className="demo-area">
+              <div className="demo-title">
+                <i className="fas fa-play"></i> Live Demo: Todo CRUD
+              </div>
+
+              <div className="todo-input-group">
+                <input
+                  type="text"
+                  className="react-input"
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyDown={(e) => e.key === 'Enter' && addTodo()}
+                  placeholder="Tambah todo baru..."
+                />
+                <button className="react-btn" onClick={addTodo}>
+                  <i className="fas fa-plus"></i>
+                </button>
+              </div>
+
+              <div style={{ display: 'flex', gap: '10px', marginBottom: '20px', flexWrap: 'wrap' }}>
+                {['all', 'active', 'completed'].map(f => (
+                  <button
+                    key={f}
+                    className={`react-btn ${filter === f ? '' : 'react-btn-outline'}`}
+                    onClick={() => setFilter(f)}
+                  >
+                    {f === 'all' ? `Semua (${todos.length})` : f === 'active' ? `Aktif (${todos.filter(t => !t.done).length})` : `Selesai (${todos.filter(t => t.done).length})`}
+                  </button>
+                ))}
+              </div>
+
+              <ul className="todo-list">
+                {filteredTodos.map(todo => (
+                  <li key={todo.id} className={`todo-item ${todo.done ? 'completed' : ''}`}>
+                    <input type="checkbox" checked={todo.done} onChange={() => toggleTodo(todo.id)} />
+                    <span>{todo.text}</span>
+                    <button onClick={() => deleteTodo(todo.id)}>
+                      <i className="fas fa-times"></i>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+
+              {filteredTodos.length === 0 && (
+                <div style={{ textAlign: 'center', padding: '40px', color: 'var(--text-secondary)' }}>
+                  <i className="fas fa-clipboard-list" style={{ fontSize: '3rem', marginBottom: '15px' }}></i>
+                  <p>Tidak ada todo</p>
+                </div>
+              )}
+            </div>
+
+            <div className="code-block">
+              <code>
+<span className="comment">// Array state manipulation</span>
+<span className="comment">// Add</span>
+setTodos([...todos, { id: Date.<span className="function">now</span>(), text: <span className="string">'New'</span>, done: <span className="keyword">false</span> }])
+
+<span className="comment">// Update</span>
+setTodos(todos.<span className="function">map</span>(t => t.id === id ? { ...t, done: <span className="keyword">true</span> } : t))
+
+<span className="comment">// Delete</span>
+setTodos(todos.<span className="function">filter</span>(t => t.id !== id))
+
+<span className="comment">// List rendering with key</span>
+todos.<span className="function">map</span>(todo => (
+  <span className="string">&lt;li key={todo.id}&gt;</span>{todo.text}<span className="string">&lt;/li&gt;</span>
+))
+              </code>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // === 7. Form Section ===
+    function FormSection() {
+      const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
+      const [errors, setErrors] = useState({});
+      const [submitted, setSubmitted] = useState(false);
+
+      const validate = () => {
+        const newErrors = {};
+        if (!form.name.trim()) newErrors.name = 'Nama wajib diisi';
+        if (!form.email.trim()) newErrors.email = 'Email wajib diisi';
+        else if (!/\S+@\S+\.\S+/.test(form.email)) newErrors.email = 'Format tidak valid';
+        if (!form.subject) newErrors.subject = 'Pilih subjek';
+        if (!form.message.trim()) newErrors.message = 'Pesan wajib diisi';
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+      };
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        if (validate()) {
+          setSubmitted(true);
+          console.log('Form submitted:', form);
+        }
+      };
+
+      return (
+        <div className="card">
+          <div className="card-header">
+            <h2><i className="fas fa-edit"></i> Form Handling dengan useState</h2>
+          </div>
+          <div className="card-body">
+            <div className="demo-area">
+              <div className="demo-title">
+                <i className="fas fa-play"></i> Live Demo: Controlled Components
+              </div>
+
+              <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                  <label>Nama:</label>
+                  <input
+                    type="text"
+                    className="react-input"
+                    value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    placeholder="Masukkan nama"
+                  />
+                  {errors.name && <div className="error-msg"><i className="fas fa-exclamation-circle"></i> {errors.name}</div>}
+                </div>
+
+                <div className="form-group">
+                  <label>Email:</label>
+                  <input
+                    type="email"
+                    className="react-input"
+                    value={form.email}
+                    onChange={(e) => setForm({ ...form, email: e.target.value })}
+                    placeholder="email@contoh.com"
+                  />
+                  {errors.email && <div className="error-msg"><i className="fas fa-exclamation-circle"></i> {errors.email}</div>}
+                </div>
+
+                <div className="form-group">
+                  <label>Subjek:</label>
+                  <select
+                    className="react-input"
+                    value={form.subject}
+                    onChange={(e) => setForm({ ...form, subject: e.target.value })}
+                  >
+                    <option value="">-- Pilih --</option>
+                    <option value="pertanyaan">Pertanyaan</option>
+                    <option value="dukungan">Dukungan</option>
+                    <option value="kolaborasi">Kolaborasi</option>
+                  </select>
+                  {errors.subject && <div className="error-msg"><i className="fas fa-exclamation-circle"></i> {errors.subject}</div>}
+                </div>
+
+                <div className="form-group">
+                  <label>Pesan:</label>
+                  <textarea
+                    className="react-input"
+                    value={form.message}
+                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    placeholder="Tulis pesan..."
+                  />
+                  {errors.message && <div className="error-msg"><i className="fas fa-exclamation-circle"></i> {errors.message}</div>}
+                </div>
+
+                <button type="submit" className="react-btn" style={{ width: '100%' }}>
+                  <i className="fas fa-paper-plane"></i> Kirim
+                </button>
+              </form>
+
+              {submitted && (
+                <div className="result-box" style={{ marginTop: '20px', background: 'rgba(97, 218, 251, 0.2)' }}>
+                  <h3 style={{ color: 'var(--react-blue)' }}><i className="fas fa-check-circle"></i> Form berhasil!</h3>
+                  <pre style={{ marginTop: '10px', fontSize: '0.9rem' }}>{JSON.stringify(form, null, 2)}</pre>
+                </div>
+              )}
+            </div>
+
+            <div className="code-block">
+              <code>
+<span className="comment">// Controlled component - value controlled by state</span>
+<span className="keyword">const</span> [form, setForm] = <span className="function">useState</span>({ name: <span className="string">''</span>, email: <span className="string">''</span> })
+
+<span className="keyword">const</span> handleChange = (e) => {
+  <span className="keyword">const</span> { name, value } = e.target
+  setForm(prev => ({ ...prev, [name]: value }))
+}
+
+<span className="string">&lt;input name="name" value={form.name} onChange={handleChange} /&gt;</span>
+<span className="string">&lt;textarea name="message" value={form.message} onChange={handleChange} /&gt;</span>
+<span className="string">&lt;form onSubmit={(e) => { e.preventDefault(); /* ... */ }}&gt;</span>
+              </code>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // === 8. Conditional Section ===
+    function ConditionalSection() {
+      const [isLoggedIn, setIsLoggedIn] = useState(false);
+      const [user, setUser] = useState({ name: 'Budi Santoso', role: 'Admin' });
+      const [tab, setTab] = useState('posts');
+
+      return (
+        <div className="card">
+          <div className="card-header">
+            <h2><i className="fas fa-code-branch"></i> Conditional Rendering</h2>
+          </div>
+          <div className="card-body">
+            <div className="demo-area">
+              <div className="demo-title">
+                <i className="fas fa-play"></i> Live Demo: If/Else, Ternary, &&
+              </div>
+
+              <button className="react-btn react-btn-outline" onClick={() => setIsLoggedIn(!isLoggedIn)}>
+                <i className="fas fa-user"></i> {isLoggedIn ? 'Logout' : 'Login'}
+              </button>
+
+              {/* && operator */}
+              {isLoggedIn && (
+                <div className="result-box" style={{ marginTop: '20px' }}>
+                  <h3 style={{ color: 'var(--react-blue)' }}>Selamat datang, {user.name}!</h3>
+                  <p>Role: <span className="status-badge active">{user.role}</span></p>
+                  <div style={{ marginTop: '15px', display: 'flex', gap: '10px' }}>
+                    <button className="react-btn react-btn-outline">Profil</button>
+                    <button className="react-btn react-btn-danger">Logout</button>
+                  </div>
+                </div>
+              )}
+
+              {/* Ternary operator */}
+              {!isLoggedIn && (
+                <div className="result-box" style={{ marginTop: '20px', background: 'rgba(255, 107, 107, 0.1)', borderColor: '#ff6b6b' }}>
+                  <h3 style={{ color: '#ff6b6b' }}>Silakan login</h3>
+                  <p>Anda belum login.</p>
+                </div>
+              )}
+
+              {/* Tab example */}
+              <div style={{ marginTop: '30px' }}>
+                <div className="result-label">Tab dengan if/else:</div>
+                <div className="tabs-container">
+                  {['posts', 'followers', 'settings'].map(t => (
+                    <button
+                      key={t}
+                      className={`tab-btn ${tab === t ? 'active' : ''}`}
+                      onClick={() => setTab(t)}
+                    >
+                      {t.charAt(0).toUpperCase() + t.slice(1)}
+                    </button>
+                  ))}
+                </div>
+                <div className="tab-content">
+                  {tab === 'posts' && <p>📝 42 posts</p>}
+                  {tab === 'followers' && <p>👥 1.5K followers</p>}
+                  {tab === 'settings' && <p>⚙️ Settings page</p>}
+                </div>
+              </div>
+            </div>
+
+            <div className="code-block">
+              <code>
+<span className="comment">// && - render if true</span>
+{isLoggedIn && <span className="string">&lt;Dashboard /&gt;</span>}
+
+<span className="comment">// Ternary - conditional render</span>
+{isLoggedIn ? <span className="string">&lt;Dashboard /&gt;</span> : <span className="string">&lt;Login /&gt;</span>}
+
+<span className="comment">// if/else - early return</span>
+<span className="keyword">if</span> (!user) <span className="keyword">return</span> <span className="string">&lt;p&gt;Loading...&lt;/p&gt;</span>
+
+<span className="comment">// Multiple conditions</span>
+<span className="keyword">if</span> (status === <span className="string">'loading'</span>) <span className="keyword">return</span> <span className="string">&lt;Spinner /&gt;</span>
+<span className="keyword">if</span> (status === <span className="string">'error'</span>) <span className="keyword">return</span> <span className="string">&lt;Error /&gt;</span>
+<span className="keyword">return</span> <span className="string">&lt;Content /&gt;</span>
+              </code>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // === UserCard Component ===
+    function UserCard({ name, role }) {
+      const initials = name.split(' ').map(n => n[0]).join('').toUpperCase();
+
+      return (
+        <div className="user-card">
+          <div className="user-avatar">{initials}</div>
+          <h3>{name}</h3>
+          <span className="status-badge active">{role}</span>
+        </div>
+      );
+    }
+
+    // === Render App ===
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>

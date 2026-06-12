@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js Interactive Examples - Belajar Vue</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Vue 3 CDN -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <style>
+    :root {
+      --vue-green: #42b883;
+      --vue-dark: #35495e;
+      --bg-dark: #1a1a2e;
+      --bg-card: #16213e;
+      --bg-accent: #0f3460;
+      --text-primary: #e4e4e7;
+      --text-secondary: #a1a1aa;
+      --border-color: #27284a;
+      --code-bg: #0d1117;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, var(--vue-dark), var(--vue-green));
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      color: rgba(255,255,255,0.9);
+      font-size: 1.1rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      margin-top: 15px;
+    }
+
+    /* Navigation */
+    .nav-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 20px;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      justify-content: center;
+    }
+
+    .nav-tab {
+      padding: 10px 20px;
+      background: transparent;
+      border: 1px solid var(--vue-green);
+      color: var(--vue-green);
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+    }
+
+    .nav-tab:hover, .nav-tab.active {
+      background: var(--vue-green);
+      color: white;
+    }
+
+    /* Main Content */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      margin-bottom: 30px;
+      overflow: hidden;
+    }
+
+    .card-header {
+      background: var(--bg-accent);
+      padding: 20px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .card-header h2 {
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-header h2 i {
+      color: var(--vue-green);
+    }
+
+    .card-body {
+      padding: 30px;
+    }
+
+    /* Demo Area */
+    .demo-area {
+      background: var(--code-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 30px;
+      margin: 20px 0;
+    }
+
+    .demo-title {
+      color: var(--vue-green);
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Code Block */
+    .code-block {
+      background: var(--code-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 20px;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      margin: 15px 0;
+    }
+
+    .code-block code {
+      color: var(--text-primary);
+    }
+
+    .keyword { color: #ff79c6; }
+    .string { color: #f1fa8c; }
+    .function { color: #50fa7b; }
+    .variable { color: #8be9fd; }
+    .comment { color: #6272a4; }
+    .number { color: #bd93f9; }
+    .html-tag { color: #ff5555; }
+    .attr { color: #50fa7b; }
+
+    /* Vue Specific Styles */
+    .vue-input {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--bg-dark);
+      border: 2px solid var(--vue-green);
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-size: 1rem;
+      outline: none;
+      transition: all 0.3s;
+    }
+
+    .vue-input:focus {
+      box-shadow: 0 0 0 4px rgba(66, 184, 131, 0.2);
+    }
+
+    .vue-btn {
+      padding: 12px 24px;
+      background: linear-gradient(135deg, var(--vue-green), var(--vue-dark));
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .vue-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(66, 184, 131, 0.3);
+    }
+
+    .vue-btn-outline {
+      background: transparent;
+      border: 2px solid var(--vue-green);
+      color: var(--vue-green);
+    }
+
+    .vue-btn-outline:hover {
+      background: var(--vue-green);
+      color: white;
+    }
+
+    .vue-btn-danger {
+      background: linear-gradient(135deg, #e74c3c, #c0392b);
+    }
+
+    /* Result Display */
+    .result-box {
+      background: rgba(66, 184, 131, 0.1);
+      border: 1px solid var(--vue-green);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 15px 0;
+    }
+
+    .result-label {
+      color: var(--vue-green);
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+    }
+
+    /* Counter Demo */
+    .counter-demo {
+      text-align: center;
+    }
+
+    .counter-display {
+      font-size: 4rem;
+      font-weight: 800;
+      color: var(--vue-green);
+      margin: 20px 0;
+    }
+
+    .counter-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .counter-buttons .vue-btn {
+      width: 60px;
+      height: 60px;
+      font-size: 1.5rem;
+    }
+
+    /* Todo Demo */
+    .todo-list {
+      list-style: none;
+    }
+
+    .todo-item {
+      display: flex;
+      align-items: center;
+      padding: 12px;
+      background: var(--bg-dark);
+      border-radius: 8px;
+      margin-bottom: 10px;
+      transition: all 0.3s;
+    }
+
+    .todo-item:hover {
+      background: var(--bg-accent);
+    }
+
+    .todo-item input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      margin-right: 15px;
+      accent-color: var(--vue-green);
+    }
+
+    .todo-item.completed {
+      opacity: 0.5;
+      text-decoration: line-through;
+    }
+
+    .todo-item span {
+      flex: 1;
+    }
+
+    .todo-item button {
+      background: none;
+      border: none;
+      color: #e74c3c;
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+
+    .todo-input-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .todo-input-group input {
+      flex: 1;
+    }
+
+    /* Form Demo */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      background: var(--bg-dark);
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-size: 1rem;
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    /* Error Message */
+    .error-msg {
+      color: #e74c3c;
+      font-size: 0.85rem;
+      margin-top: 5px;
+    }
+
+    /* Grid */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    /* Toggle */
+    .toggle-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .toggle-switch {
+      width: 60px;
+      height: 30px;
+      background: var(--border-color);
+      border-radius: 15px;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .toggle-switch.active {
+      background: var(--vue-green);
+    }
+
+    .toggle-switch::after {
+      content: '';
+      width: 24px;
+      height: 24px;
+      background: white;
+      border-radius: 50%;
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      transition: all 0.3s;
+    }
+
+    .toggle-switch.active::after {
+      left: 33px;
+    }
+
+    /* Badge */
+    .status-badge {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .status-badge.active {
+      background: rgba(66, 184, 131, 0.2);
+      color: var(--vue-green);
+    }
+
+    .status-badge.inactive {
+      background: rgba(255, 107, 107, 0.2);
+      color: #ff6b6b;
+    }
+
+    /* Animation */
+    .fade-enter-active, .fade-leave-active {
+      transition: opacity 0.3s;
+    }
+
+    .fade-enter-from, .fade-leave-to {
+      opacity: 0;
+    }
+
+    .slide-enter-active, .slide-leave-active {
+      transition: all 0.3s;
+    }
+
+    .slide-enter-from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+
+    .slide-leave-to {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 30px;
+      border-top: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-dark);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--vue-green);
+      border-radius: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 1.8rem;
+      }
+
+      .nav-tabs {
+        padding: 15px;
+      }
+
+      .nav-tab {
+        padding: 8px 15px;
+        font-size: 0.85rem;
+      }
+
+      .card-body {
+        padding: 20px;
+      }
+
+      .counter-display {
+        font-size: 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <header class="header">
+      <h1>🎯 Vue.js Interactive Examples</h1>
+      <p>Belajar Vue.js dengan contoh interaktif yang bisa langsung dicoba!</p>
+      <span class="badge">Vue 3 - Composition API Style</span>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav-tabs">
+      <button v-for="tab in tabs" :key="tab.id"
+              :class="['nav-tab', { active: activeTab === tab.id }]"
+              @click="activeTab = tab.id">
+        <i :class="tab.icon"></i> {{ tab.name }}
+      </button>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+      <!-- 1. Basic Reactivity -->
+      <section class="section" :class="{ active: activeTab === 'basics' }">
+        <div class="card">
+          <div class="card-header">
+            <h2><i class="fas fa-bolt"></i> Basic Reactivity - ref()</h2>
+          </div>
+          <div class="card-body">
+            <div class="demo-area">
+              <div class="demo-title">
+                <i class="fas fa-play"></i> Live Demo: Text Interpolation
+              </div>
+
+              <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                Data binding satu arah - perubahan data otomatis Update tampilan
+              </p>
+
+              <div class="result-box">
+                <div class="result-label">Pesan:</div>
+                <h2 style="color: var(--vue-green); font-size: 1.8rem;">{{ message }}</h2>
+              </div>
+
+              <div class="form-group">
+                <label>Ubah pesan:</label>
+                <input type="text" class="vue-input" v-model="message" placeholder="Ketik pesan baru...">
+              </div>
+
+              <div class="grid-2">
+                <div class="result-box">
+                  <div class="result-label">Count:</div>
+                  <div style="font-size: 2rem; font-weight: bold; color: var(--vue-green);">{{ count }}</div>
+                </div>
+                <div class="result-box">
+                  <div class="result-label">Double:</div>
+                  <div style="font-size: 2rem; font-weight: bold; color: #bd93f9;">{{ count * 2 }}</div>
+                </div>
+              </div>
+
+              <div class="counter-buttons">
+                <button class="vue-btn vue-btn-outline" @click="count++">
+                  <i class="fas fa-plus"></i>
+                </button>
+                <button class="vue-btn vue-btn-outline" @click="count--">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <button class="vue-btn vue-btn-danger" @click="count = 0">
+                  Reset
+                </button>
+              </div>
+            </div>
+
+            <div class="code-block">
+              <code>
+<span class="comment">// Vue 3 - Basic Reactivity</span>
+<span class="keyword">const</span> { createApp, ref } = Vue
+
+<span class="keyword">const</span> app = createApp({
+  <span class="function">setup</span>() {
+    <span class="comment">// ref() untuk primitive values</span>
+    <span class="keyword">const</span> message = <span class="function">ref</span>(<span class="string">'Halo, Vue!'</span>)
+    <span class="keyword">const</span> count = <span class="function">ref</span>(<span class="number">0</span>)
+
+    <span class="comment">// Computed - reactive berdasarkan state lain</span>
+    <span class="keyword">const</span> double = computed(() => count.value * <span class="number">2</span>)
+
+    <span class="keyword">return</span> { message, count, double }
+  }
+})
+
+<span class="comment">// Di template: {{ message }}</span>
+<span class="comment">// Di script: message.value</span>
+              </code>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Counter Component -->
+      <section class="section" :class="{ active: activeTab === 'counter' }">
+        <div class="card">
+          <div class="card-header">
+            <h2><i class="fas fa-plus-minus"></i> Counter Component Demo</h2>
+          </div>
+          <div class="card-body">
+            <div class="demo-area">
+              <div class="demo-title">
+                <i class="fas fa-play"></i> Live Demo: Counter dengan Animasi
+              </div>
+
+              <div class="counter-demo">
+                <p style="color: var(--text-secondary);">Klik tombol untuk mengubah nilai</p>
+                <div class="counter-display">{{ counter }}</div>
+                <div style="margin-bottom: 20px;">
+                  <span class="status-badge" :class="counter > 0 ? 'active' : counter < 0 ? 'inactive' : ''">
+                    {{ counter > 0 ? 'Positif' : counter < 0 ? 'Negatif' : 'Netral' }}
+                  </span>
+                </div>
+                <div class="counter-buttons">
+                  <button class="vue-btn" @click="decrement">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button class="vue-btn vue-btn-danger" @click="reset">
+                    <i class="fas fa-redo"></i>
+                  </button>
+                  <button class="vue-btn" @click="increment">
+                    <i class="fas fa-plus"></i>
+                  </button>
+                </div>
+
+                <div style="margin-top: 30px;">
+                  <p style="color: var(--text-secondary);">Step: {{ step }}</p>
+                  <input type="range" min="1" max="10" v-model="step"
+                         style="width: 200px; accent-color: var(--vue-green);">
+                </div>
+              </div>
+            </div>
+
+            <div class="code-block">
+              <code>
+<span class="keyword">const</span> Counter = {
+  <span class="function">setup</span>() {
+    <span class="keyword">const</span> counter = <span class="function">ref</span>(<span class="number">0</span>)
+    <span class="keyword">const</span> step = <span class="function">ref</span>(<span class="number">1</span>)
+
+    <span class="keyword">const</span> increment = () => counter.value += step.value
+    <span class="keyword">const</span> decrement = () => counter.value -= step.value
+    <span class="keyword">const</span> reset = () => counter.value = <span class="number">0</span>
+
+    <span class="keyword">return</span> { counter, step, increment, decrement, reset }
+  },
+  <span class="attr">template</span>: <span class="string">`
+    &lt;div class="counter"&gt;
+      &lt;h2&gt;{{ counter }}&lt;/h2&gt;
+      &lt;button @click="increment"&gt;+&lt;/button&gt;
+      &lt;button @click="decrement"&gt;-&lt;/button&gt;
+      &lt;button @click="reset"&gt;Reset&lt;/button&gt;
+    &lt;/div&gt;
+  `</span>
+}
+              </code>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Todo App -->
+      <section class="section" :class="{ active: activeTab === 'todo' }">
+        <div class="card">
+          <div class="card-header">
+            <h2><i class="fas fa-list-check"></i> Todo App - List Rendering</h2>
+          </div>
+          <div class="card-body">
+            <div class="demo-area">
+              <div class="demo-title">
+                <i class="fas fa-play"></i> Live Demo: Todo dengan CRUD
+              </div>
+
+              <div class="todo-input-group">
+                <input type="text" class="vue-input" v-model="newTodo"
+                       @keyup.enter="addTodo" placeholder="Tambah todo baru...">
+                <button class="vue-btn" @click="addTodo">
+                  <i class="fas fa-plus"></i> Tambah
+                </button>
+              </div>
+
+              <div style="margin-bottom: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+                <button :class="['vue-btn', 'vue-btn-outline', { active: filter === 'all' }]"
+                        @click="filter = 'all'">Semua ({{ todos.length }})</button>
+                <button :class="['vue-btn', 'vue-btn-outline', { active: filter === 'active' }]"
+                        @click="filter = 'active'">Aktif ({{ activeCount }})</button>
+                <button :class="['vue-btn', 'vue-btn-outline', { active: filter === 'completed' }]"
+                        @click="filter = 'completed'">Selesai ({{ completedCount }})</button>
+                <button class="vue-btn vue-btn-danger" @click="clearCompleted">
+                  <i class="fas fa-trash"></i> Hapus Selesai
+                </button>
+              </div>
+
+              <ul class="todo-list">
+                <transition-group name="slide">
+                  <li v-for="todo in filteredTodos" :key="todo.id"
+                      class="todo-item" :class="{ completed: todo.completed }">
+                    <input type="checkbox" v-model="todo.completed">
+                    <span @dblclick="editTodo(todo)">{{ todo.text }}</span>
+                    <button @click="removeTodo(todo.id)">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </li>
+                </transition-group>
+              </ul>
+
+              <div v-if="todos.length === 0" style="text-align: center; padding: 40px; color: var(--text-secondary);">
+                <i class="fas fa-clipboard-list" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                <p>Tidak ada todo. Tambahkan todo baru!</p>
+              </div>
+            </div>
+
+            <div class="code-block">
+              <code>
+<span class="comment">// Todo App dengan Vue 3</span>
+<span class="keyword">const</span> todos = <span class="function">ref</span>([])
+
+<span class="keyword">const</span> addTodo = () => {
+  <span class="keyword">if</span> (!newTodo.value.<span class="function">trim</span>()) <span class="keyword">return</span>
+  todos.value.<span class="function">push</span>({
+    <span class="variable">id</span>: Date.<span class="function">now</span>(),
+    <span class="variable">text</span>: newTodo.value,
+    <span class="variable">completed</span>: <span class="keyword">false</span>
+  })
+  newTodo.value = <span class="string">''</span>
+}
+
+<span class="comment">// v-for dengan :key</span>
+<span class="html-tag">&lt;li v-for="todo in todos" :key="todo.id"&gt;</span>
+  <span class="html-tag">&lt;input type="checkbox" v-model="todo.completed"&gt;</span>
+  {{ todo.text }}
+<span class="html-tag">&lt;/li&gt;</span>
+              </code>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Form Handling -->
+      <section class="section" :class="{ active: activeTab === 'form' }">
+        <div class="card">
+          <div class="card-header">
+            <h2><i class="fas fa-edit"></i> Form Handling - v-model</h2>
+          </div>
+          <div class="card-body">
+            <div class="demo-area">
+              <div class="demo-title">
+                <i class="fas fa-play"></i> Live Demo: Form Validation
+              </div>
+
+              <form @submit.prevent="submitForm">
+                <div class="form-group">
+                  <label>Nama Lengkap</label>
+                  <input type="text" class="vue-input" v-model="form.name"
+                         placeholder="Masukkan nama Anda">
+                  <div v-if="formErrors.name" class="error-msg">
+                    <i class="fas fa-exclamation-circle"></i> {{ formErrors.name }}
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Email</label>
+                  <input type="email" class="vue-input" v-model="form.email"
+                         placeholder="email@contoh.com">
+                  <div v-if="formErrors.email" class="error-msg">
+                    <i class="fas fa-exclamation-circle"></i> {{ formErrors.email }}
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Pilih Subjek</label>
+                  <select class="vue-input" v-model="form.subject">
+                    <option value="">-- Pilih Subjek --</option>
+                    <option value="pertanyaan">Pertanyaan Umum</option>
+                    <option value="dukungan">Dukungan Teknis</option>
+                    <option value="kolaborasi">Kolaborasi</option>
+                    <option value="lain">Lainnya</option>
+                  </select>
+                  <div v-if="formErrors.subject" class="error-msg">
+                    <i class="fas fa-exclamation-circle"></i> {{ formErrors.subject }}
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Pesan</label>
+                  <textarea class="vue-input" v-model="form.message"
+                            placeholder="Tulis pesan Anda di sini..."></textarea>
+                  <div v-if="formErrors.message" class="error-msg">
+                    <i class="fas fa-exclamation-circle"></i> {{ formErrors.message }}
+                  </div>
+                </div>
+
+                <div class="toggle-container" style="margin-bottom: 20px;">
+                  <div class="toggle-switch" :class="{ active: form.subscribe }"
+                       @click="form.subscribe = !form.subscribe"></div>
+                  <span>Berlangganan newsletter</span>
+                </div>
+
+                <button type="submit" class="vue-btn" style="width: 100%;">
+                  <i class="fas fa-paper-plane"></i> Kirim Pesan
+                </button>
+              </form>
+
+              <div v-if="formSubmitted" class="result-box" style="margin-top: 20px; background: rgba(66, 184, 131, 0.2);">
+                <h3 style="color: var(--vue-green);">
+                  <i class="fas fa-check-circle"></i> Form berhasil dikirim!
+                </h3>
+                <pre style="margin-top: 10px; color: var(--text-primary);">{{ JSON.stringify(form, null, 2) }}</pre>
+              </div>
+            </div>
+
+            <div class="code-block">
+              <code>
+<span class="comment">// v-model binding</span>
+<span class="html-tag">&lt;input v-model="form.name" type="text"&gt;</span>
+<span class="html-tag">&lt;select v-model="form.subject"&gt;</span>
+<span class="html-tag">&lt;textarea v-model="form.message"&gt;</span>
+<span class="html-tag">&lt;input type="checkbox" v-model="form.subscribe"&gt;</span>
+
+<span class="comment">// Submit handler</span>
+<span class="keyword">const</span> submitForm = () => {
+  <span class="keyword">if</span> (!<span class="function">validate</span>()) <span class="keyword">return</span>
+  console.<span class="function">log</span>(form)
+}
+
+<span class="comment">// .prevent modifier - prevent default</span>
+<span class="html-tag">&lt;form @submit.prevent="submitForm"&gt;</span>
+              </code>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Conditional Rendering -->
+      <section class="section" :class="{ active: activeTab === 'conditional' }">
+        <div class="card">
+          <div class="card-header">
+            <h2><i class="fas fa-code-branch"></i> Conditional Rendering - v-if & v-show</h2>
+          </div>
+          <div class="card-body">
+            <div class="demo-area">
+              <div class="demo-title">
+                <i class="fas fa-play"></i> Live Demo: v-if vs v-show
+              </div>
+
+              <div style="margin-bottom: 20px;">
+                <button class="vue-btn vue-btn-outline" @click="isLoggedIn = !isLoggedIn">
+                  <i class="fas fa-user"></i> {{ isLoggedIn ? 'Logout' : 'Login' }}
+                </button>
+              </div>
+
+              <!-- v-if: removes from DOM -->
+              <div v-if="isLoggedIn" class="result-box">
+                <h3 style="color: var(--vue-green);">
+                  <i class="fas fa-check"></i> Selamat datang, Budi!
+                </h3>
+                <p>Anda sudah login.</p>
+                <div class="grid-2" style="margin-top: 15px;">
+                  <button class="vue-btn vue-btn-outline">Profil</button>
+                  <button class="vue-btn vue-btn-danger">Logout</button>
+                </div>
+              </div>
+
+              <!-- v-else -->
+              <div v-else class="result-box" style="background: rgba(255, 107, 107, 0.1); border-color: #ff6b6b;">
+                <h3 style="color: #ff6b6b;">
+                  <i class="fas fa-user-times"></i> Silakan login
+                </h3>
+                <p>Anda belum login.</p>
+              </div>
+
+              <div style="margin-top: 30px;">
+                <p style="color: var(--text-secondary); margin-bottom: 10px;">v-show vs v-if:</p>
+                <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                  <div class="result-box" style="flex: 1; min-width: 200px;">
+                    <div class="result-label">v-show (display: none)</div>
+                    <div v-show="showMessage">{{ message }}</div>
+                    <button class="vue-btn vue-btn-outline" @click="showMessage = !showMessage" style="margin-top: 10px;">
+                      Toggle
+                    </button>
+                  </div>
+                  <div class="result-box" style="flex: 1; min-width: 200px;">
+                    <div class="result-label">v-if (remove from DOM)</div>
+                    <div v-if="showMessage">{{ message }}</div>
+                    <button class="vue-btn vue-btn-outline" @click="showMessage = !showMessage" style="margin-top: 10px;">
+                      Toggle
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="code-block">
+              <code>
+<span class="comment">// v-if: Remove from DOM (conditional)</span>
+<span class="html-tag">&lt;div v-if="isLoggedIn"&gt;</span>Welcome!<span class="html-tag">&lt;/div&gt;</span>
+<span class="html-tag">&lt;div v-else&gt;</span>Please login<span class="html-tag">&lt;/div&gt;</span>
+
+<span class="comment">// v-show: Toggle display (always in DOM)</span>
+<span class="html-tag">&lt;div v-show="showMessage"&gt;</span>Message<span class="html-tag">&lt;/div&gt;</span>
+
+<span class="comment">// v-else-if chain</span>
+<span class="html-tag">&lt;div v-if="status === 'loading'"&gt;</span>Loading...<span class="html-tag">&lt;/div&gt;</span>
+<span class="html-tag">&lt;div v-else-if="status === 'error'"&gt;</span>Error!<span class="html-tag">&lt;/div&gt;</span>
+<span class="html-tag">&lt;div v-else&gt;</span>Success!<span class="html-tag">&lt;/div&gt;</span>
+              </code>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. Computed Properties -->
+      <section class="section" :class="{ active: activeTab === 'computed' }">
+        <div class="card">
+          <div class="card-header">
+            <h2><i class="fas fa-calculator"></i> Computed Properties</h2>
+          </div>
+          <div class="card-body">
+            <div class="demo-area">
+              <div class="demo-title">
+                <i class="fas fa-play"></i> Live Demo: Reactive Computations
+              </div>
+
+              <div class="form-group">
+                <label>Cari produk:</label>
+                <input type="text" class="vue-input" v-model="searchQuery"
+                       placeholder="Ketik nama produk...">
+              </div>
+
+              <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+                <label style="display: flex; align-items: center; gap: 8px;">
+                  <input type="checkbox" v-model="inStockOnly">
+                  <span>Hanya yang tersedia</span>
+                </label>
+              </div>
+
+              <div class="grid-2">
+                <div class="result-box">
+                  <div class="result-label">Total Produk</div>
+                  <div style="font-size: 1.5rem; font-weight: bold;">{{ products.length }}</div>
+                </div>
+                <div class="result-box">
+                  <div class="result-label">Hasil Filter</div>
+                  <div style="font-size: 1.5rem; font-weight: bold; color: var(--vue-green);">
+                    {{ filteredProducts.length }}
+                  </div>
+                </div>
+              </div>
+
+              <ul class="todo-list">
+                <li v-for="product in filteredProducts" :key="product.id"
+                    class="todo-item" style="justify-content: space-between;">
+                  <span>
+                    <strong>{{ product.name }}</strong>
+                    <span style="color: var(--text-secondary); margin-left: 10px;">
+                      Rp {{ product.price.toLocaleString() }}
+                    </span>
+                  </span>
+                  <span class="status-badge" :class="product.inStock ? 'active' : 'inactive'">
+                    {{ product.inStock ? 'Tersedia' : 'Habis' }}
+                  </span>
+                </li>
+              </ul>
+
+              <div v-if="filteredProducts.length === 0" style="text-align: center; padding: 30px; color: var(--text-secondary);">
+                <i class="fas fa-search" style="font-size: 2rem;"></i>
+                <p>Produk tidak ditemukan</p>
+              </div>
+            </div>
+
+            <div class="code-block">
+              <code>
+<span class="comment">// Computed property - cache reactive based on dependencies</span>
+<span class="keyword">const</span> filteredProducts = <span class="function">computed</span>(() => {
+  <span class="keyword">return</span> products.value
+    .<span class="function">filter</span>(p => p.name.<span class="function">toLowerCase</span>()
+      .<span class="function">includes</span>(searchQuery.value.<span class="function">toLowerCase</span>()))
+    .<span class="function">filter</span>(p => !inStockOnly.value || p.inStock)
+})
+
+<span class="comment">// vs methods - called every render</span>
+<span class="keyword">const</span> getFiltered = () => {
+  <span class="comment">// Runs every time - no caching</span>
+}
+              </code>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. Watchers -->
+      <section class="section" :class="{ active: activeTab === 'watch' }">
+        <div class="card">
+          <div class="card-header">
+            <h2><i class="fas fa-eye"></i> Watch & WatchEffect</h2>
+          </div>
+          <div class="card-body">
+            <div class="demo-area">
+              <div class="demo-title">
+                <i class="fas fa-play"></i> Live Demo: Watch Changes
+              </div>
+
+              <div class="form-group">
+                <label>Ketik sesuatu (watch):</label>
+                <input type="text" class="vue-input" v-model="watchInput" placeholder="Watch akan mendeteksi perubahan...">
+              </div>
+
+              <div class="result-box">
+                <div class="result-label">Watch Log:</div>
+                <div style="max-height: 150px; overflow-y: auto;">
+                  <div v-for="(log, index) in watchLogs" :key="index"
+                       style="padding: 8px; border-bottom: 1px solid var(--border-color); font-size: 0.9rem;">
+                    <span style="color: var(--vue-green);">{{ log.time }}</span>
+                    <span style="margin-left: 10px;">{{ log.message }}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-top: 20px;">
+                <label>Username (immediate watch):</label>
+                <input type="text" class="vue-input" v-model="username"
+                       placeholder="Ketik untuk cek availability...">
+              </div>
+
+              <div v-if="checkingUsername" style="color: var(--text-secondary);">
+                <i class="fas fa-spinner fa-spin"></i> Mengecek...
+              </div>
+              <div v-else-if="usernameAvailability !== null" style="margin-top: 10px;">
+                <span v-if="usernameAvailability" class="status-badge active">
+                  <i class="fas fa-check"></i> Username tersedia!
+                </span>
+                <span v-else class="status-badge inactive">
+                  <i class="fas fa-times"></i> Username sudah digunakan
+                </span>
+              </div>
+            </div>
+
+            <div class="code-block">
+              <code>
+<span class="comment">// watch - reactive on specific value</span>
+<span class="function">watch</span>(watchInput, (newVal, oldVal) => {
+  console.<span class="function">log</span>(<span class="string">`${oldVal} -> ${newVal}`</span>)
+  watchLogs.<span class="function">push</span>({ message: <span class="string">`Changed: ${newVal}`</span> })
+})
+
+<span class="comment">// watchEffect - auto track dependencies</span>
+<span class="function">watchEffect</span>(() => {
+  console.<span class="function">log</span>(username.value) <span class="comment">// Auto tracks username</span>
+  <span class="comment">// Runs immediately and on change</span>
+})
+
+<span class="comment">// watch with immediate</span>
+<span class="function">watch</span>(searchQuery, <span class="function">async</span> (query) => {
+  <span class="comment">// Runs on mount too</span>
+}, { <span class="variable">immediate</span>: <span class="keyword">true</span> })
+              </code>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. Event Handling -->
+      <section class="section" :class="{ active: activeTab === 'events' }">
+        <div class="card">
+          <div class="card-header">
+            <h2><i class="fas fa-hand-pointer"></i> Event Handling</h2>
+          </div>
+          <div class="card-body">
+            <div class="demo-area">
+              <div class="demo-title">
+                <i class="fas fa-play"></i> Live Demo: Click & Keyboard Events
+              </div>
+
+              <div class="grid-2">
+                <div class="result-box">
+                  <div class="result-label">Click Counter</div>
+                  <div style="font-size: 3rem; font-weight: bold; text-align: center; color: var(--vue-green);">
+                    {{ clickCount }}
+                  </div>
+                  <button class="vue-btn" @click="handleClick" style="width: 100%; margin-top: 15px;">
+                    <i class="fas fa-hand-pointer"></i> Klik Saya!
+                  </button>
+                  <button class="vue-btn vue-btn-outline" @click.stop="clickCount = 0" style="width: 100%; margin-top: 10px;">
+                    Reset
+                  </button>
+                </div>
+
+                <div class="result-box">
+                  <div class="result-label">Keyboard Events</div>
+                  <input type="text" class="vue-input"
+                         v-model="keyInput"
+                         @keydown="handleKeydown"
+                         placeholder="Ketik sesuatu..."
+                         style="margin-bottom: 15px;">
+                  <div style="font-size: 0.9rem; color: var(--text-secondary);">
+                    <div v-for="key in keyLogs" :key="key.time" style="padding: 5px;">
+                      <span style="color: var(--vue-green);">{{ key.key }}</span>
+                      <span style="margin-left: 10px;">{{ key.time }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="result-box" style="margin-top: 20px;">
+                <div class="result-label">Mouse Position</div>
+                <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                  <div>X: <strong>{{ mouseX }}</strong></div>
+                  <div>Y: <strong>{{ mouseY }}</strong></div>
+                </div>
+                <div style="padding: 20px; background: var(--bg-dark); border-radius: 8px; margin-top: 10px;"
+                     @mouseover="mouseX = $event.offsetX"
+                     @mousemove="mouseY = $event.offsetY">
+                  Arahkan mouse ke sini
+                </div>
+              </div>
+            </div>
+
+            <div class="code-block">
+              <code>
+<span class="comment">// Click event</span>
+<span class="html-tag">&lt;button @click="handleClick"&gt;</span>Click<span class="html-tag">&lt;/button&gt;</span>
+<span class="html-tag">&lt;button @click.stop="handleClick"&gt;</span>Stop propagation<span class="html-tag">&lt;/button&gt;</span>
+
+<span class="comment">// Keyboard events</span>
+<span class="html-tag">&lt;input @keydown.enter="submit"</span> <span class="comment">// Enter key</span>
+<span class="html-tag">@keydown.ctrl.s="save"&gt;</span>        <span class="comment">// Ctrl+S</span>
+
+<span class="comment">// Event modifiers: .stop, .prevent, .capture, .self, .once</span>
+<span class="html-tag">&lt;a @click.prevent="handleLink"&gt;</span>     <span class="comment">// Prevent default</span>
+              </code>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Vue.js Interactive Examples - Belajar dengan Praktik</p>
+      <p style="margin-top: 10px;">
+        <i class="fab fa-vuejs" style="color: var(--vue-green);"></i>
+        Vue 3 CDN Version
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    const { createApp, ref, computed, watch, watchEffect } = Vue
+
+    createApp({
+      setup() {
+        // === Tab Navigation ===
+        const tabs = [
+          { id: 'basics', name: 'Basics', icon: 'fas fa-bolt' },
+          { id: 'counter', name: 'Counter', icon: 'fas fa-plus-minus' },
+          { id: 'todo', name: 'Todo App', icon: 'fas fa-list-check' },
+          { id: 'form', name: 'Form', icon: 'fas fa-edit' },
+          { id: 'conditional', name: 'Conditional', icon: 'fas fa-code-branch' },
+          { id: 'computed', name: 'Computed', icon: 'fas fa-calculator' },
+          { id: 'watch', name: 'Watch', icon: 'fas fa-eye' },
+          { id: 'events', name: 'Events', icon: 'fas fa-hand-pointer' }
+        ]
+        const activeTab = ref('basics')
+
+        // === Basics ===
+        const message = ref('Halo, Vue.js! 🎉')
+        const count = ref(0)
+
+        // === Counter ===
+        const counter = ref(0)
+        const step = ref(1)
+
+        const increment = () => counter.value += step.value
+        const decrement = () => counter.value -= step.value
+        const reset = () => counter.value = 0
+
+        // === Todo App ===
+        const todos = ref([
+          { id: 1, text: 'Belajar Vue.js', completed: true },
+          { id: 2, text: 'Buat component pertama', completed: false },
+          { id: 3, text: 'Implementasi state management', completed: false }
+        ])
+        const newTodo = ref('')
+        const filter = ref('all')
+
+        const activeCount = computed(() => todos.value.filter(t => !t.completed).length)
+        const completedCount = computed(() => todos.value.filter(t => t.completed).length)
+
+        const filteredTodos = computed(() => {
+          if (filter.value === 'active') return todos.value.filter(t => !t.completed)
+          if (filter.value === 'completed') return todos.value.filter(t => t.completed)
+          return todos.value
+        })
+
+        const addTodo = () => {
+          if (!newTodo.value.trim()) return
+          todos.value.push({
+            id: Date.now(),
+            text: newTodo.value,
+            completed: false
+          })
+          newTodo.value = ''
+        }
+
+        const removeTodo = (id) => {
+          todos.value = todos.value.filter(t => t.id !== id)
+        }
+
+        const clearCompleted = () => {
+          todos.value = todos.value.filter(t => !t.completed)
+        }
+
+        const editTodo = (todo) => {
+          const newText = prompt('Edit todo:', todo.text)
+          if (newText) todo.text = newText
+        }
+
+        // === Form ===
+        const form = ref({
+          name: '',
+          email: '',
+          subject: '',
+          message: '',
+          subscribe: false
+        })
+        const formErrors = ref({})
+        const formSubmitted = ref(false)
+
+        const validateForm = () => {
+          formErrors.value = {}
+
+          if (!form.value.name.trim()) {
+            formErrors.value.name = 'Nama wajib diisi'
+          }
+
+          if (!form.value.email.trim()) {
+            formErrors.value.email = 'Email wajib diisi'
+          } else if (!/\S+@\S+\.\S+/.test(form.value.email)) {
+            formErrors.value.email = 'Format email tidak valid'
+          }
+
+          if (!form.value.subject) {
+            formErrors.value.subject = 'Pilih subjek'
+          }
+
+          if (!form.value.message.trim()) {
+            formErrors.value.message = 'Pesan wajib diisi'
+          } else if (form.value.message.trim().length < 10) {
+            formErrors.value.message = 'Pesan minimal 10 karakter'
+          }
+
+          return Object.keys(formErrors.value).length === 0
+        }
+
+        const submitForm = () => {
+          if (validateForm()) {
+            formSubmitted.value = true
+            console.log('Form submitted:', form.value)
+          }
+        }
+
+        // === Conditional ===
+        const isLoggedIn = ref(false)
+        const showMessage = ref(true)
+
+        // === Computed ===
+        const searchQuery = ref('')
+        const inStockOnly = ref(false)
+
+        const products = ref([
+          { id: 1, name: 'Laptop Gaming', price: 15000000, inStock: true },
+          { id: 2, name: 'Keyboard Mechanical', price: 1500000, inStock: true },
+          { id: 3, name: 'Mouse Wireless', price: 500000, inStock: false },
+          { id: 4, name: 'Monitor 27"', price: 3500000, inStock: true },
+          { id: 5, name: 'Headset', price: 800000, inStock: true },
+          { id: 6, name: 'Webcam HD', price: 600000, inStock: false }
+        ])
+
+        const filteredProducts = computed(() => {
+          return products.value
+            .filter(p => p.name.toLowerCase().includes(searchQuery.value.toLowerCase()))
+            .filter(p => !inStockOnly.value || p.inStock)
+        })
+
+        // === Watch ===
+        const watchInput = ref('')
+        const watchLogs = ref([])
+
+        watch(watchInput, (newVal, oldVal) => {
+          if (newVal !== oldVal) {
+            watchLogs.value.unshift({
+              time: new Date().toLocaleTimeString(),
+              message: `"${oldVal || 'empty'}" → "${newVal}"`
+            })
+            if (watchLogs.value.length > 5) watchLogs.value.pop()
+          }
+        })
+
+        const username = ref('')
+        const usernameAvailability = ref(null)
+        const checkingUsername = ref(false)
+
+        watch(username, (newVal) => {
+          if (!newVal) {
+            usernameAvailability.value = null
+            return
+          }
+          checkingUsername.value = true
+          setTimeout(() => {
+            checkingUsername.value = false
+            usernameAvailability.value = newVal.length >= 3 && !['admin', 'root', 'user'].includes(newVal)
+          }, 500)
+        })
+
+        // === Events ===
+        const clickCount = ref(0)
+        const keyInput = ref('')
+        const keyLogs = ref([])
+        const mouseX = ref(0)
+        const mouseY = ref(0)
+
+        const handleClick = () => clickCount.value++
+
+        const handleKeydown = (e) => {
+          keyLogs.value.unshift({
+            key: e.key,
+            time: new Date().toLocaleTimeString()
+          })
+          if (keyLogs.value.length > 3) keyLogs.value.pop()
+        }
+
+        return {
+          // Tabs
+          tabs, activeTab,
+
+          // Basics
+          message, count,
+
+          // Counter
+          counter, step, increment, decrement, reset,
+
+          // Todo
+          todos, newTodo, filter, activeCount, completedCount, filteredTodos,
+          addTodo, removeTodo, clearCompleted, editTodo,
+
+          // Form
+          form, formErrors, formSubmitted, submitForm,
+
+          // Conditional
+          isLoggedIn, showMessage,
+
+          // Computed
+          searchQuery, inStockOnly, products, filteredProducts,
+
+          // Watch
+          watchInput, watchLogs, username, usernameAvailability, checkingUsername,
+
+          // Events
+          clickCount, keyInput, keyLogs, mouseX, mouseY, handleClick, handleKeydown
+        }
+      }
+    }).mount('#app')
+  </script>
+</body>
+</html>

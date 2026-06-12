@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sale Blast - Premium Poster Template</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;800&family=Montserrat:wght@900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; }
+    .poster {
+      width: 800px;
+      height: 1100px;
+      background: linear-gradient(135deg, #FF3366 0%, #FF6B35 50%, #FFCC00 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .blast-text {
+      position: absolute;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 280px;
+      color: white;
+      text-shadow: 8px 8px 0 rgba(0,0,0,0.2);
+      top: 50px;
+      left: 20px;
+      line-height: 0.9;
+    }
+    .sale-percent {
+      position: absolute;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 180px;
+      color: #111;
+      top: 320px;
+      left: 30px;
+    }
+    .off-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 120px;
+      color: white;
+      position: absolute;
+      top: 500px;
+      left: 280px;
+    }
+    .star {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background: #FFCC00;
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+    .star-1 { top: 80px; right: 60px; }
+    .star-2 { top: 200px; right: 150px; width: 40px; height: 40px; }
+    .star-3 { bottom: 200px; left: 40px; width: 50px; height: 50px; }
+    .star-4 { bottom: 350px; right: 80px; width: 35px; height: 35px; }
+    .curved-text {
+      position: absolute;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      color: white;
+      top: 620px;
+      left: 50%;
+      transform: translateX(-50%);
+      letter-spacing: 8px;
+    }
+    .cta-btn {
+      position: absolute;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #111;
+      color: white;
+      padding: 25px 80px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      letter-spacing: 4px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+    }
+    .tagline {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.8);
+      font-size: 14px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+    .lightning {
+      position: absolute;
+      font-size: 80px;
+      color: #FFCC00;
+    }
+    .lightning-1 { top: 100px; right: 30px; transform: rotate(15deg); }
+    .lightning-2 { top: 450px; left: 20px; transform: rotate(-20deg); }
+    .confetti {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      border-radius: 3px;
+    }
+    .confetti-1 { background: #00ccff; top: 150px; left: 100px; transform: rotate(45deg); }
+    .confetti-2 { background: #ff66b2; top: 250px; right: 200px; transform: rotate(20deg); }
+    .confetti-3 { background: #00ff88; top: 400px; left: 600px; transform: rotate(60deg); }
+    .confetti-4 { background: #ffcc00; bottom: 450px; right: 100px; transform: rotate(30deg); }
+  </style>
+</head>
+<body>
+  <div class="poster">
+    <div class="blast-text">BLAST</div>
+    <div class="sale-percent">70%</div>
+    <div class="off-text">OFF</div>
+    <div class="curved-text">Limited Time Offer</div>
+    <div class="star star-1"></div>
+    <div class="star star-2"></div>
+    <div class="star star-3"></div>
+    <div class="star star-4"></div>
+    <div class="lightning lightning-1">⚡</div>
+    <div class="lightning lightning-2">⚡</div>
+    <div class="confetti confetti-1"></div>
+    <div class="confetti confetti-2"></div>
+    <div class="confetti confetti-3"></div>
+    <div class="confetti confetti-4"></div>
+    <button class="cta-btn">SHOP NOW</button>
+    <div class="tagline">Sale Ends December 31st</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Summer Vibes - Ice Cream Shop Template</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #ffe4ec; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+    .poster {
+      width: 800px;
+      height: 1100px;
+      background: linear-gradient(180deg, #ff9a9e 0%, #fad0c4 50%, #ffd1ff 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .cloud {
+      position: absolute;
+      background: white;
+      border-radius: 50px;
+      opacity: 0.8;
+    }
+    .cloud-1 { width: 150px; height: 50px; top: 80px; left: 50px; }
+    .cloud-2 { width: 100px; height: 35px; top: 120px; right: 100px; }
+    .cloud-3 { width: 120px; height: 40px; top: 200px; left: 200px; }
+    .ice-cream {
+      position: absolute;
+      font-size: 100px;
+    }
+    .cone-1 { top: 100px; right: 100px; transform: rotate(15deg); }
+    .cone-2 { bottom: 300px; left: 50px; transform: rotate(-10deg); }
+    .cone-3 { top: 300px; right: 50px; }
+    .main-title {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    .title-text {
+      font-family: 'Fredoka One', cursive;
+      font-size: 90px;
+      color: white;
+      text-shadow: 4px 4px 0 #ff6b9d;
+      line-height: 1;
+    }
+    .subtitle {
+      font-family: 'Nunito', sans-serif;
+      font-size: 24px;
+      color: white;
+      margin-top: 20px;
+    }
+    .flavor-row {
+      position: absolute;
+      bottom: 200px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .flavor {
+      background: white;
+      padding: 15px 25px;
+      border-radius: 50px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 14px;
+      color: #ff6b9d;
+      font-weight: 600;
+    }
+    .special-badge {
+      position: absolute;
+      top: 180px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ffd700;
+      padding: 15px 40px;
+      border-radius: 50px;
+      box-shadow: 0 5px 20px rgba(255,215,0,0.4);
+    }
+    .special-text {
+      font-family: 'Fredoka One', cursive;
+      font-size: 18px;
+      color: #ff6b9d;
+    }
+    .address {
+      position: absolute;
+      bottom: 100px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: 'Nunito', sans-serif;
+      font-size: 14px;
+      color: white;
+    }
+    .hours {
+      position: absolute;
+      bottom: 60px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: 'Nunito', sans-serif;
+      font-size: 12px;
+      color: rgba(255,255,255,0.8);
+    }
+    .emoji-rain {
+      position: absolute;
+      font-size: 30px;
+      opacity: 0.5;
+    }
+    .emoji-1 { top: 150px; left: 100px; }
+    .emoji-2 { top: 250px; left: 50px; }
+    .emoji-3 { bottom: 400px; right: 80px; }
+  </style>
+</head>
+<body>
+  <div class="poster">
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+    <div class="ice-cream cone-1">🍦</div>
+    <div class="ice-cream cone-2">🍨</div>
+    <div class="ice-cream cone-3">🍧</div>
+    <div class="special-badge">
+      <div class="special-text">🎉 GRAND OPENING 🎉</div>
+    </div>
+    <div class="main-title">
+      <div class="title-text">SCOOP</div>
+      <div class="subtitle">Ice Cream & More</div>
+    </div>
+    <div class="flavor-row">
+      <div class="flavor">🍓 Strawberry</div>
+      <div class="flavor">🍫 Chocolate</div>
+      <div class="flavor">🧁 Vanilla</div>
+      <div class="flavor">🥭 Mango</div>
+    </div>
+    <div class="emoji-rain emoji-1">✨</div>
+    <div class="emoji-rain emoji-2">💫</div>
+    <div class="emoji-rain emoji-3">⭐</div>
+    <div class="address">123 Sweet Street, Downtown</div>
+    <div class="hours">Open Daily 11AM - 10PM</div>
+  </div>
+</body>
+</html>

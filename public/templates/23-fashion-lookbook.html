@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Collection - Fashion Lookbook</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #1a1a1a; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+    .poster {
+      width: 800px;
+      height: 1100px;
+      background: linear-gradient(180deg, #f5f5f5 0%, #e0e0e0 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #111;
+      padding: 25px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      color: white;
+      letter-spacing: 5px;
+    }
+    .menu-item {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 3px;
+      margin-left: 30px;
+    }
+    .model-silhouette {
+      position: absolute;
+      top: 100px;
+      left: 0;
+      right: 0;
+      height: 700px;
+      background: linear-gradient(135deg, #333, #1a1a1a);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .mannequin {
+      font-size: 500px;
+      opacity: 0.15;
+    }
+    .look-badge {
+      position: absolute;
+      top: 200px;
+      left: 50px;
+      background: #ff3300;
+      padding: 15px 30px;
+    }
+    .look-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      color: white;
+      letter-spacing: 3px;
+    }
+    .collection-info {
+      position: absolute;
+      bottom: 150px;
+      left: 50px;
+      right: 50px;
+    }
+    .collection-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 36px;
+      color: #111;
+      margin-bottom: 15px;
+    }
+    .collection-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 14px;
+      color: #666;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    .price {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 24px;
+      color: #111;
+    }
+    .shop-btn {
+      position: absolute;
+      bottom: 50px;
+      left: 50px;
+      background: #111;
+      color: white;
+      border: none;
+      padding: 18px 40px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      letter-spacing: 3px;
+      cursor: pointer;
+    }
+    .color-options {
+      position: absolute;
+      bottom: 55px;
+      right: 50px;
+      display: flex;
+      gap: 10px;
+    }
+    .color-dot {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+    }
+    .color-1 { background: #111; }
+    .color-2 { background: #f5f5f5; border-color: #ddd; }
+    .color-3 { background: #8b4513; }
+    .color-4 { background: #2c3e50; }
+  </style>
+</head>
+<body>
+  <div class="poster">
+    <div class="header">
+      <div class="logo">MAISON NOIR</div>
+      <div>
+        <span class="menu-item">NEW</span>
+        <span class="menu-item">COLLECTIONS</span>
+        <span class="menu-item">LOOKBOOK</span>
+        <span class="menu-item">CONTACT</span>
+      </div>
+    </div>
+    <div class="model-silhouette">
+      <div class="mannequin">👗</div>
+    </div>
+    <div class="look-badge">
+      <div class="look-text">LOOK 01</div>
+    </div>
+    <div class="collection-info">
+      <div class="collection-title">Urban Edge Collection</div>
+      <div class="collection-sub">
+        Contemporary minimalism meets streetwear influence.<br>
+        Tailored silhouettes with unexpected details.
+      </div>
+      <div class="price">$890</div>
+    </div>
+    <button class="shop-btn">SHOP NOW</button>
+    <div class="color-options">
+      <div class="color-dot color-1"></div>
+      <div class="color-dot color-2"></div>
+      <div class="color-dot color-3"></div>
+      <div class="color-dot color-4"></div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retro Vibes - Y2K Style Template</title>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Fredoka+One&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #ff69b4; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+    .poster {
+      width: 800px;
+      height: 1100px;
+      background: linear-gradient(135deg, #ff69b4 0%, #ff1493 50%, #ff6ec7 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+    }
+    .bubble-1 { width: 200px; height: 200px; top: -50px; right: -50px; }
+    .bubble-2 { width: 150px; height: 150px; top: 200px; left: -30px; }
+    .bubble-3 { width: 100px; height: 100px; bottom: 100px; right: 50px; }
+    .star-shape {
+      position: absolute;
+      font-size: 50px;
+    }
+    .star-1 { top: 50px; left: 50px; animation: twinkle 2s infinite; }
+    .star-2 { top: 100px; right: 100px; animation: twinkle 2s infinite 0.5s; }
+    .star-3 { bottom: 200px; left: 80px; animation: twinkle 2s infinite 1s; }
+    .star-4 { bottom: 150px; right: 60px; animation: twinkle 2s infinite 1.5s; }
+    @keyframes twinkle {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .main-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    .retro-text {
+      font-family: 'Fredoka One', cursive;
+      font-size: 120px;
+      color: white;
+      text-shadow: 5px 5px 0 #ff69b4, 8px 8px 0 rgba(0,0,0,0.2);
+      line-height: 1;
+    }
+    .vibes-text {
+      font-family: 'Comic Neue', cursive;
+      font-size: 60px;
+      color: #fffacd;
+      margin-top: 20px;
+      text-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+    }
+    .heart-icon {
+      font-size: 80px;
+      margin-top: 30px;
+      animation: heartbeat 1s infinite;
+    }
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    .sparkle {
+      position: absolute;
+      font-size: 30px;
+      color: #fffacd;
+    }
+    .sparkle-1 { top: 250px; left: 150px; }
+    .sparkle-2 { top: 280px; right: 180px; }
+    .sparkle-3 { top: 450px; left: 100px; }
+    .sparkle-4 { top: 480px; right: 120px; }
+    .year-badge {
+      position: absolute;
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fffacd;
+      padding: 15px 40px;
+      border-radius: 50px;
+      font-family: 'Fredoka One', cursive;
+      font-size: 24px;
+      color: #ff1493;
+    }
+    .fun-text {
+      position: absolute;
+      bottom: 150px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: 'Comic Neue', cursive;
+      font-size: 28px;
+      color: white;
+    }
+    .emoji-row {
+      position: absolute;
+      bottom: 80px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 40px;
+    }
+    .cta-sticker {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-5deg);
+      background: #fffacd;
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-family: 'Fredoka One', cursive;
+      font-size: 18px;
+      color: #ff1493;
+    }
+  </style>
+</head>
+<body>
+  <div class="poster">
+    <div class="bubble bubble-1"></div>
+    <div class="bubble bubble-2"></div>
+    <div class="bubble bubble-3"></div>
+    <div class="star-shape star-1">⭐</div>
+    <div class="star-shape star-2">⭐</div>
+    <div class="star-shape star-3">✨</div>
+    <div class="star-shape star-4">✨</div>
+    <div class="sparkle sparkle-1">💫</div>
+    <div class="sparkle sparkle-2">💫</div>
+    <div class="sparkle sparkle-3">💫</div>
+    <div class="sparkle sparkle-4">💫</div>
+    <div class="year-badge">✧ 2026 ✧</div>
+    <div class="main-text">
+      <div class="retro-text">RETRO</div>
+      <div class="vibes-text">~ Vibes ~</div>
+      <div class="heart-icon">💖</div>
+    </div>
+    <div class="fun-text">It's Giving Y2K Energy!</div>
+    <div class="emoji-row">🌸 💕 🎀 ✨ 🌸</div>
+    <div class="cta-sticker">GET YOURS NOW!</div>
+  </div>
+</body>
+</html>

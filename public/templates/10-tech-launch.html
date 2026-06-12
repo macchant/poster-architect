@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyber Future - Tech Launch Template</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0a0a0a; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+    .poster {
+      width: 800px;
+      height: 1100px;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+    .glow-line {
+      position: absolute;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #00ffff, transparent);
+      animation: glowPulse 3s ease-in-out infinite;
+    }
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+    .glow-1 { top: 200px; left: 0; right: 0; }
+    .glow-2 { top: 400px; left: 0; right: 0; animation-delay: 1s; }
+    .glow-3 { bottom: 300px; left: 0; right: 0; animation-delay: 2s; }
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #00ffff;
+      border-radius: 50%;
+      animation: float 5s ease-in-out infinite;
+    }
+    .particle-1 { top: 100px; left: 100px; animation-delay: 0s; }
+    .particle-2 { top: 200px; right: 150px; animation-delay: 1s; }
+    .particle-3 { top: 500px; left: 200px; animation-delay: 2s; }
+    .particle-4 { bottom: 400px; right: 100px; animation-delay: 3s; }
+    .particle-5 { top: 300px; left: 50%; animation-delay: 4s; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); opacity: 0.3; }
+      50% { transform: translateY(-20px); opacity: 1; }
+    }
+    .brand {
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .brand-icon {
+      width: 50px;
+      height: 50px;
+      border: 2px solid #00ffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+    .brand-name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 20px;
+      color: #00ffff;
+      letter-spacing: 5px;
+    }
+    .main-title {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 10;
+    }
+    .revolution-text {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 900;
+      font-size: 80px;
+      color: white;
+      text-shadow: 0 0 50px rgba(0, 255, 255, 0.5);
+      letter-spacing: 5px;
+    }
+    .ai-text {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 120px;
+      background: linear-gradient(180deg, #00ffff, #0080ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+    }
+    .tagline {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.7);
+      letter-spacing: 15px;
+      margin-top: 20px;
+    }
+    .launch-badge {
+      position: absolute;
+      top: 750px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #00ffff, #0080ff);
+      padding: 15px 50px;
+      border-radius: 3px;
+    }
+    .launch-text {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 14px;
+      color: #0a0a0a;
+      font-weight: 700;
+      letter-spacing: 3px;
+    }
+    .specs {
+      position: absolute;
+      bottom: 180px;
+      left: 50px;
+      right: 50px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .spec {
+      text-align: center;
+    }
+    .spec-value {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 28px;
+      color: #00ffff;
+      font-weight: 700;
+    }
+    .spec-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.5);
+      letter-spacing: 2px;
+      margin-top: 5px;
+    }
+    .cta-btn {
+      position: absolute;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: transparent;
+      border: 2px solid #00ffff;
+      color: #00ffff;
+      padding: 18px 60px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 14px;
+      letter-spacing: 3px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .cta-btn:hover {
+      background: #00ffff;
+      color: #0a0a0a;
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="poster">
+    <div class="grid-bg"></div>
+    <div class="glow-line glow-1"></div>
+    <div class="glow-line glow-2"></div>
+    <div class="glow-line glow-3"></div>
+    <div class="particle particle-1"></div>
+    <div class="particle particle-2"></div>
+    <div class="particle particle-3"></div>
+    <div class="particle particle-4"></div>
+    <div class="particle particle-5"></div>
+    <div class="brand">
+      <div class="brand-icon">◈</div>
+      <div class="brand-name">NEXGEN</div>
+    </div>
+    <div class="main-title">
+      <div class="revolution-text">NEXT</div>
+      <div class="ai-text">GEN AI</div>
+      <div class="tagline">THE FUTURE IS NOW</div>
+    </div>
+    <div class="launch-badge">
+      <div class="launch-text">LAUNCHING 2026</div>
+    </div>
+    <div class="specs">
+      <div class="spec">
+        <div class="spec-value">10X</div>
+        <div class="spec-label">FASTER</div>
+      </div>
+      <div class="spec">
+        <div class="spec-value">99.9%</div>
+        <div class="spec-label">ACCURACY</div>
+      </div>
+      <div class="spec">
+        <div class="spec-value">∞</div>
+        <div class="spec-label">POSSIBILITIES</div>
+      </div>
+    </div>
+    <button class="cta-btn">PRE-ORDER NOW</button>
+  </div>
+</body>
+</html>

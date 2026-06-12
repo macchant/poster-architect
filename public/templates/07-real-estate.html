@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lux Estate - Real Estate Template</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #1a1a1a; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+    .poster {
+      width: 800px;
+      height: 1100px;
+      background: linear-gradient(180deg, #f5f5f5 0%, #e0e0e0 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: #1a1a1a;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 50px;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      color: white;
+      letter-spacing: 5px;
+    }
+    .tag {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      color: #c9a227;
+      background: rgba(201, 162, 39, 0.2);
+      padding: 8px 20px;
+      letter-spacing: 3px;
+    }
+    .property-image {
+      position: absolute;
+      top: 80px;
+      left: 0;
+      right: 0;
+      height: 400px;
+      background: linear-gradient(135deg, #2c3e50, #1a252f);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .house-icon {
+      font-size: 150px;
+      opacity: 0.3;
+    }
+    .price-tag {
+      position: absolute;
+      bottom: -30px;
+      left: 50px;
+      background: #1a1a1a;
+      padding: 20px 40px;
+      z-index: 10;
+    }
+    .price {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      color: white;
+    }
+    .property-details {
+      position: absolute;
+      top: 550px;
+      left: 50px;
+      right: 50px;
+    }
+    .title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 32px;
+      color: #1a1a1a;
+      margin-bottom: 10px;
+    }
+    .address {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 14px;
+      color: #666;
+      letter-spacing: 2px;
+      margin-bottom: 30px;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    .feature {
+      text-align: center;
+      padding: 20px;
+      background: white;
+      border: 1px solid #ddd;
+    }
+    .feature-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      color: #1a1a1a;
+    }
+    .feature-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      color: #888;
+      letter-spacing: 2px;
+      margin-top: 5px;
+    }
+    .description {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 14px;
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+    .contact-btn {
+      background: #1a1a1a;
+      color: white;
+      border: none;
+      padding: 20px 50px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      letter-spacing: 3px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .contact-btn:hover {
+      background: #c9a227;
+    }
+    .agent-info {
+      position: absolute;
+      bottom: 40px;
+      right: 50px;
+      text-align: right;
+    }
+    .agent-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      color: #1a1a1a;
+    }
+    .agent-phone {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <div class="poster">
+    <div class="header">
+      <div class="logo">LUXE</div>
+      <div class="tag">PREMIUM LISTING</div>
+    </div>
+    <div class="property-image">
+      <div class="house-icon">🏠</div>
+      <div class="price-tag">
+        <div class="price">$2,450,000</div>
+      </div>
+    </div>
+    <div class="property-details">
+      <div class="title">Modern Villa with Ocean View</div>
+      <div class="address">123 PACIFIC COAST HIGHWAY, MALIBU, CA</div>
+      <div class="features">
+        <div class="feature">
+          <div class="feature-num">5</div>
+          <div class="feature-label">BEDROOMS</div>
+        </div>
+        <div class="feature">
+          <div class="feature-num">4</div>
+          <div class="feature-label">BATHROOMS</div>
+        </div>
+        <div class="feature">
+          <div class="feature-num">4,200</div>
+          <div class="feature-label">SQ FT</div>
+        </div>
+      </div>
+      <div class="description">
+        Experience coastal living at its finest. This stunning modern villa features floor-to-ceiling windows, a private infinity pool, smart home technology, and breathtaking panoramic ocean views. Perfect for those seeking luxury and tranquility.
+      </div>
+      <button class="contact-btn">SCHEDULE VIEWING</button>
+    </div>
+    <div class="agent-info">
+      <div class="agent-name">Sarah Johnson</div>
+      <div class="agent-phone">+1 (555) 987-6543</div>
+    </div>
+  </div>
+</body>
+</html>

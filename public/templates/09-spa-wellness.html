@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serenity Spa - Wellness Template</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #f5f0e8; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+    .poster {
+      width: 800px;
+      height: 1100px;
+      background: linear-gradient(180deg, #f5e6d3 0%, #e8d5c4 50%, #d4c4b0 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .circle-accent {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(144, 190, 109, 0.3);
+    }
+    .circle-1 { width: 500px; height: 500px; top: -150px; right: -150px; }
+    .circle-2 { width: 300px; height: 300px; bottom: 200px; left: -100px; }
+    .circle-3 { width: 200px; height: 200px; top: 300px; left: 50px; border-color: rgba(144, 190, 109, 0.5); }
+    .leaf {
+      position: absolute;
+      font-size: 60px;
+      opacity: 0.15;
+    }
+    .leaf-1 { top: 100px; left: 100px; transform: rotate(-20deg); }
+    .leaf-2 { bottom: 300px; right: 80px; transform: rotate(30deg); }
+    .leaf-3 { top: 500px; left: 200px; transform: rotate(45deg); }
+    .header {
+      position: absolute;
+      top: 80px;
+      left: 0;
+      right: 0;
+      text-align: center;
+    }
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      color: #8b7355;
+      letter-spacing: 10px;
+    }
+    .main-title {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      width: 90%;
+    }
+    .serenity-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: 90px;
+      color: #5c4d3d;
+      line-height: 1;
+    }
+    .spa-text {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 20px;
+      color: #8b7355;
+      letter-spacing: 20px;
+      margin-top: 20px;
+    }
+    .divider-leaf {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 30px 0;
+    }
+    .divider-line {
+      width: 80px;
+      height: 1px;
+      background: #8b7355;
+    }
+    .divider-icon {
+      margin: 0 20px;
+      font-size: 20px;
+      color: #8b7355;
+    }
+    .tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      color: #8b7355;
+      font-style: italic;
+    }
+    .services {
+      position: absolute;
+      bottom: 180px;
+      left: 50px;
+      right: 50px;
+    }
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .service-item {
+      text-align: center;
+      padding: 20px;
+    }
+    .service-icon {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+    .service-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      color: #8b7355;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .book-btn {
+      position: absolute;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #5c4d3d;
+      color: white;
+      border: none;
+      padding: 18px 50px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      letter-spacing: 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .book-btn:hover {
+      background: #8b7355;
+    }
+    .contact {
+      position: absolute;
+      bottom: 30px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      color: #a89b8c;
+      letter-spacing: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="poster">
+    <div class="circle-accent circle-1"></div>
+    <div class="circle-accent circle-2"></div>
+    <div class="circle-accent circle-3"></div>
+    <div class="leaf leaf-1">🍃</div>
+    <div class="leaf leaf-2">🌿</div>
+    <div class="leaf leaf-3">🌱</div>
+    <div class="header">
+      <div class="logo">WELLNESS SANCTUARY</div>
+    </div>
+    <div class="main-title">
+      <div class="serenity-text">Serenity</div>
+      <div class="spa-text">S P A</div>
+      <div class="divider-leaf">
+        <div class="divider-line"></div>
+        <div class="divider-icon">🌸</div>
+        <div class="divider-line"></div>
+      </div>
+      <div class="tagline">Restore Your Inner Peace</div>
+    </div>
+    <div class="services">
+      <div class="service-grid">
+        <div class="service-item">
+          <div class="service-icon">💆</div>
+          <div class="service-name">Massage</div>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">🧖</div>
+          <div class="service-name">Sauna</div>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">💅</div>
+          <div class="service-name">Nail Care</div>
+        </div>
+      </div>
+    </div>
+    <button class="book-btn">BOOK APPOINTMENT</button>
+    <div class="contact">+1 (555) 789-0123 • serenity-spa.com</div>
+  </div>
+</body>
+</html>

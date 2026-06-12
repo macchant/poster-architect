@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn & Grow - Workshop Template</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #f0f4f8; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+    .poster {
+      width: 800px;
+      height: 1100px;
+      background: linear-gradient(180deg, #2b6cb0 0%, #3182ce 50%, #63b3ed 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .pattern-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
+    }
+    .top-badge {
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      padding: 12px 30px;
+      border-radius: 50px;
+    }
+    .badge-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: white;
+      letter-spacing: 3px;
+    }
+    .main-title {
+      position: absolute;
+      top: 150px;
+      left: 0;
+      right: 0;
+      text-align: center;
+    }
+    .learn-text {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 100px;
+      color: white;
+      text-shadow: 0 4px 30px rgba(0,0,0,0.2);
+      line-height: 0.9;
+    }
+    .grow-text {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 400;
+      font-size: 60px;
+      color: rgba(255,255,255,0.8);
+      letter-spacing: 30px;
+      margin-top: 10px;
+    }
+    .topic-box {
+      position: absolute;
+      top: 400px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      padding: 30px 60px;
+      text-align: center;
+    }
+    .topic-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      color: #666;
+      letter-spacing: 5px;
+      margin-bottom: 10px;
+    }
+    .topic-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 28px;
+      color: #2b6cb0;
+    }
+    .details-grid {
+      position: absolute;
+      top: 550px;
+      left: 80px;
+      right: 80px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .detail-item {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      padding: 25px;
+      text-align: center;
+      border-radius: 10px;
+    }
+    .detail-icon {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+    .detail-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 2px;
+      margin-bottom: 5px;
+    }
+    .detail-value {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      color: white;
+    }
+    .price-tag {
+      position: absolute;
+      top: 750px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ffd700;
+      padding: 20px 60px;
+    }
+    .price-value {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 36px;
+      color: #2b6cb0;
+    }
+    .price-note {
+      font-size: 12px;
+      color: #666;
+    }
+    .register-btn {
+      position: absolute;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      color: #2b6cb0;
+      border: none;
+      padding: 20px 80px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 3px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .register-btn:hover {
+      transform: translateX(-50%) scale(1.05);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    .spots-left {
+      position: absolute;
+      bottom: 30px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: rgba(255,255,255,0.8);
+      letter-spacing: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="poster">
+    <div class="pattern-bg"></div>
+    <div class="top-badge">
+      <div class="badge-text">LIMITED SPOTS AVAILABLE</div>
+    </div>
+    <div class="main-title">
+      <div class="learn-text">LEARN</div>
+      <div class="grow-text">& GROW</div>
+    </div>
+    <div class="topic-box">
+      <div class="topic-label">MASTERCLASS TOPIC</div>
+      <div class="topic-title">Digital Marketing Strategy 2026</div>
+    </div>
+    <div class="details-grid">
+      <div class="detail-item">
+        <div class="detail-icon">📅</div>
+        <div class="detail-label">DATE</div>
+        <div class="detail-value">March 20, 2026</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-icon">⏰</div>
+        <div class="detail-label">TIME</div>
+        <div class="detail-value">2:00 PM EST</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-icon">📍</div>
+        <div class="detail-label">FORMAT</div>
+        <div class="detail-value">Live Online</div>
+      </div>
+    </div>
+    <div class="price-tag">
+      <div class="price-value">$99</div>
+      <div class="price-note">Early Bird Price</div>
+    </div>
+    <button class="register-btn">REGISTER NOW</button>
+    <div class="spots-left">⚡ Only 15 spots remaining</div>
+  </div>
+</body>
+</html>

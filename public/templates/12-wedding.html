@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love Forever - Wedding Template</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #f8e1e1; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+    .poster {
+      width: 800px;
+      height: 1100px;
+      background: linear-gradient(180deg, #fff 0%, #fdf2f2 50%, #f8e1e1 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .floral-corner {
+      position: absolute;
+      font-size: 200px;
+      opacity: 0.1;
+    }
+    .floral-tl { top: -50px; left: -50px; transform: rotate(0deg); }
+    .floral-tr { top: -50px; right: -50px; transform: rotate(90deg); }
+    .floral-bl { bottom: -50px; left: -50px; transform: rotate(-90deg); }
+    .floral-br { bottom: -50px; right: -50px; transform: rotate(180deg); }
+    .gold-border {
+      position: absolute;
+      inset: 40px;
+      border: 1px solid #d4a574;
+    }
+    .inner-border {
+      position: absolute;
+      inset: 50px;
+      border: 1px solid rgba(212, 165, 116, 0.5);
+    }
+    .script-text {
+      position: absolute;
+      top: 80px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: 'Great Vibes', cursive;
+      font-size: 48px;
+      color: #d4a574;
+    }
+    .names {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    .ampersand {
+      font-family: 'Great Vibes', cursive;
+      font-size: 60px;
+      color: #d4a574;
+      margin: 10px 0;
+    }
+    .name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 72px;
+      color: #333;
+      line-height: 1.1;
+    }
+    .date-border {
+      position: absolute;
+      top: 68%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-top: 1px solid #d4a574;
+      border-bottom: 1px solid #d4a574;
+      padding: 15px 80px;
+    }
+    .date-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      color: #666;
+      letter-spacing: 8px;
+    }
+    .venue {
+      position: absolute;
+      bottom: 180px;
+      left: 0;
+      right: 0;
+      text-align: center;
+    }
+    .venue-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      color: #999;
+      letter-spacing: 5px;
+      margin-bottom: 10px;
+    }
+    .venue-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      color: #333;
+    }
+    .rsvp-btn {
+      position: absolute;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #d4a574;
+      color: white;
+      border: none;
+      padding: 18px 50px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      letter-spacing: 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .rsvp-btn:hover {
+      background: #c49464;
+    }
+    .heart {
+      position: absolute;
+      font-size: 30px;
+      color: #d4a574;
+      opacity: 0.3;
+    }
+    .heart-1 { top: 200px; left: 100px; }
+    .heart-2 { top: 300px; right: 120px; }
+    .heart-3 { bottom: 300px; left: 150px; }
+  </style>
+</head>
+<body>
+  <div class="poster">
+    <div class="floral-corner floral-tl">🌸</div>
+    <div class="floral-corner floral-tr">🌸</div>
+    <div class="floral-corner floral-bl">🌸</div>
+    <div class="floral-corner floral-br">🌸</div>
+    <div class="gold-border"></div>
+    <div class="inner-border"></div>
+    <div class="script-text">Together with their families</div>
+    <div class="names">
+      <div class="name">EMILY</div>
+      <div class="ampersand">&</div>
+      <div class="name">JAMES</div>
+    </div>
+    <div class="date-border">
+      <div class="date-text">JUNE 28, 2026</div>
+    </div>
+    <div class="heart heart-1">💕</div>
+    <div class="heart heart-2">💕</div>
+    <div class="heart heart-3">💕</div>
+    <div class="venue">
+      <div class="venue-label">REQUEST THE HONOR OF YOUR PRESENCE</div>
+      <div class="venue-name">Rosewood Gardens, Beverly Hills</div>
+    </div>
+    <button class="rsvp-btn">RSVP BY MAY 15</button>
+  </div>
+</body>
+</html>

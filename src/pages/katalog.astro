@@ -1,0 +1,168 @@
+---
+import Layout from '../layouts/Layout.astro';
+import KatalogClient from '../components/KatalogClient.jsx';
+
+// ============================================================
+// CONFIGURATION
+// Update this URL after deploying your Google Apps Script.
+// See the setup section below for instructions.
+// ============================================================
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID_HERE/exec';
+const isApiConfigured = !GOOGLE_SCRIPT_URL.includes('YOUR_SCRIPT_ID');
+---
+
+<Layout title="Katalog">
+
+  <!-- Header -->
+  <section class="bg-gradient-to-br from-orange-600 via-orange-500 to-green-600 text-white py-20 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10 pointer-events-none">
+      <div class="absolute top-0 right-0 w-80 h-80 bg-white rounded-full blur-3xl translate-x-1/3 -translate-y-1/3"></div>
+      <div class="absolute bottom-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl -translate-x-1/3 translate-y-1/3"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-6">
+      <nav class="text-sm text-white/60 mb-4">
+        <a href="/" class="hover:text-white transition">Beranda</a>
+        <span class="mx-2">/</span>
+        <span class="text-white font-medium">Katalog</span>
+      </nav>
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+        <div>
+          <h1 class="text-4xl md:text-5xl font-extrabold mb-3">Katalog Buku</h1>
+          <p class="text-white/80 text-lg">Temukan pengetahuan yang tepat untuk membangun hidup baru Anda.</p>
+        </div>
+        <div class="bg-white/15 backdrop-blur border border-white/20 rounded-2xl px-6 py-4 text-center flex-shrink-0">
+          <div class="text-3xl font-extrabold" id="book-count">...</div>
+          <div class="text-sm text-white/70">Judul Buku Gratis</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- React Catalog (client-side fetch) -->
+  <KatalogClient
+    apiUrl={GOOGLE_SCRIPT_URL}
+    client:load
+  />
+
+  <!-- Setup Guide -->
+  <section class="py-16 bg-white border-t border-gray-100">
+    <div class="max-w-4xl mx-auto px-6 space-y-6">
+
+      <!-- Google Sheets Setup -->
+      <div class="bg-gradient-to-br from-blue-50 to-sky-50 rounded-3xl p-8 border border-blue-100">
+        <div class="flex items-start gap-5 mb-6">
+          <div class="w-14 h-14 bg-blue-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-md">
+            <i class="fas fa-database text-white text-xl"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Pengaturan Koneksi Google Sheets</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Agar buku baru dari Panel Admin langsung muncul di katalog, hubungkan ke Google Sheets:
+            </p>
+          </div>
+        </div>
+
+        <div class="space-y-4 text-sm text-gray-700">
+          <div class="flex items-start gap-3 p-4 bg-white rounded-xl border border-blue-100">
+            <span class="w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center font-bold flex-shrink-0 mt-0.5">1</span>
+            <div>
+              <p class="font-semibold text-gray-900 mb-1">Buat Google Sheet</p>
+              <p>Buka <a href="https://sheets.google.com" target="_blank" class="text-blue-600 font-semibold hover:underline">sheets.google.com</a>, buat spreadsheet baru. Header di baris 1:</p>
+              <div class="mt-3 bg-gray-800 text-green-400 rounded-xl p-4 font-mono text-xs overflow-x-auto">
+                <div class="grid grid-cols-[1fr_1fr_80px_160px_200px_100px_80px_80px_80px_150px_150px] gap-x-4 gap-y-1">
+                  <div><span class="text-orange-400 font-bold">title</span></div>
+                  <div><span class="text-orange-400 font-bold">author</span></div>
+                  <div><span class="text-orange-400 font-bold">year</span></div>
+                  <div><span class="text-orange-400 font-bold">category</span></div>
+                  <div><span class="text-orange-400 font-bold">pdfUrl</span></div>
+                  <div><span class="text-orange-400 font-bold">coverId</span></div>
+                  <div><span class="text-orange-400 font-bold">pages</span></div>
+                  <div><span class="text-orange-400 font-bold">featured</span></div>
+                  <div><span class="text-orange-400 font-bold">aktif</span></div>
+                  <div><span class="text-orange-400 font-bold">gradientFrom</span></div>
+                  <div><span class="text-orange-400 font-bold">gradientTo</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3 p-4 bg-white rounded-xl border border-blue-100">
+            <span class="w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center font-bold flex-shrink-0 mt-0.5">2</span>
+            <div>
+              <p class="font-semibold text-gray-900 mb-1">Buka Apps Script</p>
+              <p>Di Google Sheets klik <strong>Extensions → Apps Script</strong>. Salin kode dari file <code class="bg-gray-100 px-2 py-0.5 rounded text-blue-700 font-mono text-xs">public/google-apps-script.js</code> di project ini.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3 p-4 bg-white rounded-xl border border-blue-100">
+            <span class="w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center font-bold flex-shrink-0 mt-0.5">3</span>
+            <div>
+              <p class="font-semibold text-gray-900 mb-1">Atur Kata Sandi & Deploy</p>
+              <p>Ganti <code class="bg-gray-100 px-2 py-0.5 rounded text-blue-700 font-mono text-xs">ADMIN_PASSWORD</code> dengan sandi Anda. Klik <strong>Deploy → New deployment → Web app</strong>:</p>
+              <ul class="mt-2 space-y-1 text-gray-600">
+                <li>• <strong>Execute as:</strong> "Me"</li>
+                <li>• <strong>Who has access:</strong> "Anyone"</li>
+              </ul>
+              <p class="mt-2">Deploy dan <strong>salin URL Web App</strong> (contoh: <code class="bg-gray-100 px-2 py-0.5 rounded text-blue-700 font-mono text-xs">script.google.com/macros/s/AKfycb...</code>)</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3 p-4 bg-white rounded-xl border border-blue-100">
+            <span class="w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center font-bold flex-shrink-0 mt-0.5">4</span>
+            <div>
+              <p class="font-semibold text-gray-900 mb-1">Tempel URL ke Astro</p>
+              <p>Buka <code class="bg-gray-100 px-2 py-0.5 rounded text-blue-700 font-mono text-xs">src/components/KatalogClient.jsx</code>, cari baris:</p>
+              <div class="mt-2 bg-gray-800 text-green-400 rounded-xl p-4 font-mono text-xs">
+                const API_URL = 'https://script.google.com/macros/s/<span class="text-red-400">YOUR_SCRIPT_ID_HERE</span>/exec'
+              </div>
+              <p class="mt-2">Ganti dengan URL Web App Anda, lalu rebuild.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3 p-4 bg-emerald-50 rounded-xl border border-emerald-200">
+            <span class="w-8 h-8 bg-emerald-500 text-white rounded-lg flex items-center justify-center font-bold flex-shrink-0 mt-0.5">✓</span>
+            <div>
+              <p class="font-semibold text-gray-900 mb-1">Selesai!</p>
+              <p class="text-gray-600">Buku baru di Panel Admin langsung muncul di katalog tanpa rebuild.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PDF Hosting Guide -->
+      <div class="bg-gradient-to-br from-sky-50 to-blue-50 rounded-3xl p-8 border border-sky-100">
+        <div class="flex items-start gap-5">
+          <div class="w-14 h-14 bg-sky-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-md">
+            <i class="fas fa-cloud-upload-alt text-white text-xl"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Hosting PDF Gratis dengan Google Drive</h3>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">
+              PDF buku di-hosting gratis melalui Google Drive.
+            </p>
+            <ol class="space-y-3 text-sm text-gray-700">
+              <li class="flex items-start gap-3">
+                <span class="font-bold text-sky-600 mt-0.5">1.</span>
+                <p>Buka <a href="https://drive.google.com" target="_blank" class="text-sky-600 font-semibold hover:underline">drive.google.com</a>, <strong>"Baru → Unggah File"</strong> → pilih PDF.</p>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="font-bold text-sky-600 mt-0.5">2.</span>
+                <p>Klik kanan → <strong>"Bagikan"</strong> → <strong>"Semua orang dengan tautan"</strong> → Peran: <strong>"Pelajar"</strong></p>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="font-bold text-sky-600 mt-0.5">3.</span>
+                <p>Salin tautan. Format: <code class="bg-gray-100 px-2 py-0.5 rounded text-sky-700 font-mono text-xs">https://drive.google.com/file/d/<span class="text-red-400">FILE_ID</span>/view</code></p>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="font-bold text-sky-600 mt-0.5">4.</span>
+                <p>Tempel ke kolom <strong>pdfUrl</strong> di Panel Admin.</p>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</Layout>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Golden Hour - Restaurant Template</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #1a1a1a; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+    .poster {
+      width: 800px;
+      height: 1100px;
+      background: linear-gradient(180deg, #2d1810 0%, #4a2c1a 50%, #1a1a1a 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .wine-glass {
+      position: absolute;
+      top: 100px;
+      right: 50px;
+      font-size: 180px;
+      opacity: 0.2;
+    }
+    .vine-left {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 150px;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(34, 60, 34, 0.8), transparent);
+    }
+    .vine-right {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 150px;
+      height: 100%;
+      background: linear-gradient(-90deg, rgba(34, 60, 34, 0.8), transparent);
+    }
+    .gold-border {
+      position: absolute;
+      inset: 30px;
+      border: 2px solid #c9a227;
+    }
+    .header-text {
+      position: absolute;
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 14px;
+      color: #c9a227;
+      letter-spacing: 15px;
+    }
+    .main-title {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    .restaurant-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 90px;
+      color: white;
+      line-height: 1;
+    }
+    .decorative-line {
+      width: 150px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #c9a227, transparent);
+      margin: 30px auto;
+    }
+    .subtitle {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 5px;
+    }
+    .quote {
+      position: absolute;
+      bottom: 180px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      color: rgba(255,255,255,0.6);
+      font-style: italic;
+      text-align: center;
+      max-width: 500px;
+    }
+    .reservation-btn {
+      position: absolute;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: transparent;
+      border: 2px solid #c9a227;
+      color: #c9a227;
+      padding: 18px 50px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      letter-spacing: 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .reservation-btn:hover {
+      background: #c9a227;
+      color: #1a1a1a;
+    }
+    .contact-info {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="poster">
+    <div class="vine-left"></div>
+    <div class="vine-right"></div>
+    <div class="wine-glass">🍷</div>
+    <div class="gold-border"></div>
+    <div class="header-text">FINE DINING EXPERIENCE</div>
+    <div class="main-title">
+      <div class="restaurant-name">GOLDEN<br>HOUR</div>
+      <div class="decorative-line"></div>
+      <div class="subtitle">RISTORANTE • ITALIANO</div>
+    </div>
+    <div class="quote">"A journey through authentic Italian cuisine, where every dish tells a story"</div>
+    <button class="reservation-btn">RESERVE TABLE</button>
+    <div class="contact-info">+1 (555) 123-4567 • 123 Main Street, NYC • goldenhour.com</div>
+  </div>
+</body>
+</html>

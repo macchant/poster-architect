@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Christmas Magic - Holiday Template</title>
+  <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #1a472a; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+    .poster {
+      width: 800px;
+      height: 1100px;
+      background: linear-gradient(180deg, #1a472a 0%, #2d5a3d 50%, #1a472a 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .snow {
+      position: absolute;
+      color: white;
+      font-size: 20px;
+      opacity: 0.8;
+      animation: snowfall linear infinite;
+    }
+    @keyframes snowfall {
+      0% { transform: translateY(-20px); opacity: 0; }
+      10% { opacity: 0.8; }
+      90% { opacity: 0.8; }
+      100% { transform: translateY(1120px); opacity: 0; }
+    }
+    .snow-1 { left: 10%; animation-duration: 8s; animation-delay: 0s; }
+    .snow-2 { left: 20%; animation-duration: 10s; animation-delay: 1s; }
+    .snow-3 { left: 35%; animation-duration: 7s; animation-delay: 2s; }
+    .snow-4 { left: 50%; animation-duration: 9s; animation-delay: 0.5s; }
+    .snow-5 { left: 65%; animation-duration: 11s; animation-delay: 1.5s; }
+    .snow-6 { left: 80%; animation-duration: 8s; animation-delay: 3s; }
+    .snow-7 { left: 90%; animation-duration: 10s; animation-delay: 2.5s; }
+    .tree {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 400px;
+      opacity: 0.15;
+    }
+    .header-badge {
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #c41e3a;
+      padding: 10px 30px;
+      border-radius: 50px;
+    }
+    .badge-text {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 12px;
+      color: white;
+      letter-spacing: 5px;
+      font-weight: 600;
+    }
+    .main-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    .merry-text {
+      font-family: 'Mountains of Christmas', cursive;
+      font-size: 100px;
+      color: #ffd700;
+      text-shadow: 3px 3px 0 #c41e3a;
+      line-height: 1;
+    }
+    .christmas-text {
+      font-family: 'Mountains of Christmas', cursive;
+      font-size: 80px;
+      color: white;
+      margin-top: 10px;
+    }
+    .year {
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: 60px;
+      color: #c41e3a;
+      margin-top: 20px;
+    }
+    .tagline {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 16px;
+      color: rgba(255,255,255,0.8);
+      letter-spacing: 5px;
+      margin-top: 30px;
+    }
+    .ornament {
+      position: absolute;
+      font-size: 60px;
+    }
+    .ornament-1 { top: 200px; left: 80px; }
+    .ornament-2 { top: 250px; right: 100px; }
+    .ornament-3 { bottom: 250px; left: 100px; }
+    .ornament-4 { bottom: 200px; right: 80px; }
+    .wishes {
+      position: absolute;
+      bottom: 100px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 2px;
+    }
+    .wreath {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 800px;
+      opacity: 0.05;
+    }
+  </style>
+</head>
+<body>
+  <div class="poster">
+    <div class="tree">🎄</div>
+    <div class="wreath">🎄</div>
+    <div class="snow snow-1">❄</div>
+    <div class="snow snow-2">❄</div>
+    <div class="snow snow-3">❄</div>
+    <div class="snow snow-4">❄</div>
+    <div class="snow snow-5">❄</div>
+    <div class="snow snow-6">❄</div>
+    <div class="snow snow-7">❄</div>
+    <div class="header-badge">
+      <div class="badge-text">✦ HOLIDAY SPECIAL ✦</div>
+    </div>
+    <div class="ornament ornament-1">🎄</div>
+    <div class="ornament ornament-2">🎁</div>
+    <div class="ornament ornament-3">🎅</div>
+    <div class="ornament ornament-4">🦌</div>
+    <div class="main-content">
+      <div class="merry-text">Merry</div>
+      <div class="christmas-text">Christmas</div>
+      <div class="year">2026</div>
+      <div class="tagline">Wishing You Joy & Peace</div>
+    </div>
+    <div class="wishes">May this season bring love, laughter, and precious moments with family</div>
+  </div>
+</body>
+</html>

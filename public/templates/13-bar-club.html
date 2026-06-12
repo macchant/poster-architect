@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Hour - Bar Club Template</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #111; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+    .poster {
+      width: 800px;
+      height: 1100px;
+      background: linear-gradient(180deg, #0d0d0d 0%, #1a0a0a 50%, #2d0f0f 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .neon-glow {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      filter: blur(100px);
+    }
+    .neon-pink { background: #ff0066; top: -50px; right: -50px; }
+    .neon-purple { background: #8b5cf6; bottom: -50px; left: -50px; }
+    .happy-text {
+      position: absolute;
+      top: 80px;
+      left: 0;
+      right: 0;
+      text-align: center;
+    }
+    .happy {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 180px;
+      color: #ff0066;
+      text-shadow: 0 0 50px #ff0066, 0 0 100px #ff0066;
+      line-height: 0.9;
+    }
+    .hour-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 280px;
+      color: #ffd700;
+      text-shadow: 0 0 50px #ffd700, 0 0 100px #ffd700;
+      line-height: 0.8;
+    }
+    .time-badge {
+      position: absolute;
+      top: 580px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #ff0066, #ff66b2);
+      padding: 20px 60px;
+    }
+    .time-text {
+      font-family: 'Inter', sans-serif;
+      font-weight: 900;
+      font-size: 36px;
+      color: white;
+      text-align: center;
+    }
+    .time-sub {
+      font-size: 14px;
+      opacity: 0.9;
+      text-align: center;
+      margin-top: 5px;
+    }
+    .drinks {
+      position: absolute;
+      top: 700px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 80px;
+    }
+    .drinks-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+    }
+    .drink-icon {
+      opacity: 0.8;
+    }
+    .dj-text {
+      position: absolute;
+      bottom: 200px;
+      left: 0;
+      right: 0;
+      text-align: center;
+    }
+    .dj-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: #ffd700;
+      letter-spacing: 10px;
+      margin-bottom: 10px;
+    }
+    .dj-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      color: white;
+    }
+    .address {
+      position: absolute;
+      bottom: 100px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 3px;
+    }
+    .cta-btn {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: transparent;
+      border: 2px solid #ff0066;
+      color: #ff0066;
+      padding: 15px 50px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      letter-spacing: 3px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .cta-btn:hover {
+      background: #ff0066;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="poster">
+    <div class="neon-glow neon-pink"></div>
+    <div class="neon-glow neon-purple"></div>
+    <div class="happy-text">
+      <div class="happy">HAPPY</div>
+      <div class="hour-text">HOUR</div>
+    </div>
+    <div class="time-badge">
+      <div class="time-text">5 PM - 8 PM</div>
+      <div class="time-sub">DAILY SPECIALS</div>
+    </div>
+    <div class="drinks">
+      <div class="drinks-row">
+        <span class="drink-icon">🍸</span>
+        <span class="drink-icon">🍹</span>
+        <span class="drink-icon">🍺</span>
+        <span class="drink-icon">🥃</span>
+        <span class="drink-icon">🍷</span>
+      </div>
+    </div>
+    <div class="dj-text">
+      <div class="dj-label">FEATURING DJ</div>
+      <div class="dj-name">SPIN MASTER</div>
+    </div>
+    <div class="address">123 NIGHTLIFE AVE, NEW YORK • 21+</div>
+    <button class="cta-btn">RESERVE TABLE</button>
+  </div>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transform Now - Fitness Template</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #111; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+    .poster {
+      width: 800px;
+      height: 1100px;
+      background: linear-gradient(180deg, #1a3d1a 0%, #2d5a27 50%, #3d7a3d 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hex-pattern {
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5L55 20V40L30 55L5 40V20L30 5z' fill='none' stroke='rgba(255,255,255,0.05)' stroke-width='1'/%3E%3C/svg%3E");
+      background-size: 60px 60px;
+    }
+    .lightning-bg {
+      position: absolute;
+      font-size: 400px;
+      color: rgba(255, 255, 255, 0.05);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .main-title {
+      position: absolute;
+      top: 120px;
+      left: 0;
+      right: 0;
+      text-align: center;
+    }
+    .transform-text {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 100px;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 10px;
+      text-shadow: 0 0 50px rgba(16, 185, 129, 0.5);
+    }
+    .now-text {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 60px;
+      color: #10b981;
+      letter-spacing: 20px;
+    }
+    .tagline {
+      position: absolute;
+      top: 350px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.9);
+      letter-spacing: 8px;
+      text-transform: uppercase;
+    }
+    .stats-grid {
+      position: absolute;
+      top: 450px;
+      left: 50px;
+      right: 50px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .stat-box {
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid #10b981;
+      padding: 30px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+    .stat-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 48px;
+      color: #10b981;
+      font-weight: 700;
+    }
+    .stat-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.8);
+      letter-spacing: 2px;
+      margin-top: 5px;
+    }
+    .offer-badge {
+      position: absolute;
+      top: 720px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #10b981;
+      padding: 20px 60px;
+      border-radius: 5px;
+    }
+    .offer-text {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 24px;
+      color: white;
+      text-align: center;
+    }
+    .offer-sub {
+      font-size: 12px;
+      opacity: 0.9;
+      margin-top: 5px;
+    }
+    .cta-btn {
+      position: absolute;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      color: #1a3d1a;
+      border: none;
+      padding: 25px 80px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 28px;
+      letter-spacing: 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .cta-btn:hover {
+      background: #10b981;
+      color: white;
+      transform: translateX(-50%) scale(1.05);
+    }
+    .contact-info {
+      position: absolute;
+      bottom: 40px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+      letter-spacing: 3px;
+    }
+  </style>
+</head>
+<body>
+  <div class="poster">
+    <div class="hex-pattern"></div>
+    <div class="lightning-bg">💪</div>
+    <div class="main-title">
+      <div class="transform-text">TRANSFORM</div>
+      <div class="now-text">NOW</div>
+    </div>
+    <div class="tagline">Your Body Is a Statement</div>
+    <div class="stats-grid">
+      <div class="stat-box">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">EQUIPMENT</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">ACCESS</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">50+</div>
+        <div class="stat-label">CLASSES</div>
+      </div>
+    </div>
+    <div class="offer-badge">
+      <div class="offer-text">JOIN NOW<br><span class="offer-sub">First Month FREE</span></div>
+    </div>
+    <button class="cta-btn">GET STARTED</button>
+    <div class="contact-info">WWW.FITNESSHUB.COM • +1 (555) 123-4567</div>
+  </div>
+</body>
+</html>

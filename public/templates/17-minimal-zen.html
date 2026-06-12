@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minimal Zen - Minimalist Template</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #fafafa; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+    .poster {
+      width: 800px;
+      height: 1100px;
+      background: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+    .thin-line {
+      position: absolute;
+      background: #e0e0e0;
+    }
+    .line-h { height: 1px; left: 80px; right: 80px; }
+    .line-top { top: 120px; }
+    .line-bottom { bottom: 120px; }
+    .line-v { width: 1px; top: 80px; bottom: 80px; }
+    .line-left { left: 80px; }
+    .line-right { right: 80px; }
+    .center-mark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 8px;
+      height: 8px;
+      background: #111;
+      border-radius: 50%;
+    }
+    .brand {
+      position: absolute;
+      top: 60px;
+      left: 80px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 400;
+      font-size: 11px;
+      color: #111;
+      letter-spacing: 8px;
+      text-transform: uppercase;
+    }
+    .main-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    .headline {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 300;
+      font-size: 72px;
+      color: #111;
+      letter-spacing: -2px;
+      line-height: 1.1;
+    }
+    .subtext {
+      font-family: 'Inter', sans-serif;
+      font-weight: 200;
+      font-size: 14px;
+      color: #999;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      margin-top: 30px;
+    }
+    .dot-accent {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #111;
+      border-radius: 50%;
+    }
+    .dot-1 { top: 200px; left: 80px; }
+    .dot-2 { top: 300px; right: 80px; }
+    .dot-3 { bottom: 250px; left: 80px; }
+    .dot-4 { bottom: 350px; right: 80px; }
+    .footer-text {
+      position: absolute;
+      bottom: 60px;
+      left: 80px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 10px;
+      color: #ccc;
+      letter-spacing: 3px;
+    }
+    .footer-link {
+      position: absolute;
+      bottom: 60px;
+      right: 80px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 10px;
+      color: #999;
+      letter-spacing: 2px;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+  </style>
+</head>
+<body>
+  <div class="poster">
+    <div class="thin-line line-h line-top"></div>
+    <div class="thin-line line-h line-bottom"></div>
+    <div class="thin-line line-v line-left"></div>
+    <div class="thin-line line-v line-right"></div>
+    <div class="center-mark"></div>
+    <div class="dot-accent dot-1"></div>
+    <div class="dot-accent dot-2"></div>
+    <div class="dot-accent dot-3"></div>
+    <div class="dot-accent dot-4"></div>
+    <div class="brand">Studio</div>
+    <div class="main-text">
+      <div class="headline">Less<br>Is<br>More</div>
+      <div class="subtext">Simplicity in Design</div>
+    </div>
+    <div class="footer-text">2026</div>
+    <div class="footer-link">explore.studio</div>
+  </div>
+</body>
+</html>

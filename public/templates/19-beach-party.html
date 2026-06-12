@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Summer Vibes - Beach Party Template</title>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #87CEEB; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+    .poster {
+      width: 800px;
+      height: 1100px;
+      background: linear-gradient(180deg, #00bfff 0%, #87CEEB 30%, #ffd700 70%, #ff6b35 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .wave {
+      position: absolute;
+      width: 200%;
+      height: 100px;
+      background: repeating-linear-gradient(90deg, transparent, transparent 50px, rgba(255,255,255,0.3) 50px, rgba(255,255,255,0.3) 100px);
+      animation: wave 3s linear infinite;
+    }
+    @keyframes wave {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .wave-1 { bottom: 250px; opacity: 0.5; }
+    .wave-2 { bottom: 230px; opacity: 0.3; animation-delay: 0.5s; }
+    .palm-left {
+      position: absolute;
+      bottom: 0;
+      left: -20px;
+      font-size: 300px;
+      transform: rotate(-10deg);
+    }
+    .palm-right {
+      position: absolute;
+      bottom: 0;
+      right: -20px;
+      font-size: 300px;
+      transform: rotate(10deg) scaleX(-1);
+    }
+    .sun {
+      position: absolute;
+      top: 80px;
+      right: 100px;
+      font-size: 150px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    .main-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 10;
+    }
+    .summer-text {
+      font-family: 'Permanent Marker', cursive;
+      font-size: 100px;
+      color: white;
+      text-shadow: 4px 4px 0 #ff6b35;
+      line-height: 1;
+    }
+    .vibes-text {
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: 50px;
+      color: #fff;
+      letter-spacing: 20px;
+      margin-top: 10px;
+      text-shadow: 2px 2px 0 #00bfff;
+    }
+    .beach-emoji {
+      font-size: 80px;
+      margin-top: 30px;
+    }
+    .date-badge {
+      position: absolute;
+      top: 180px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      padding: 15px 40px;
+      border-radius: 50px;
+    }
+    .date-text {
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: #ff6b35;
+    }
+    .party-info {
+      position: absolute;
+      bottom: 150px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255,255,255,0.9);
+      padding: 20px 50px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .info-text {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 14px;
+      color: #333;
+    }
+    .cta-btn {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ff6b35;
+      color: white;
+      border: none;
+      padding: 18px 50px;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 3px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .cta-btn:hover {
+      transform: translateX(-50%) scale(1.05);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    .cloud {
+      position: absolute;
+      font-size: 60px;
+      opacity: 0.8;
+    }
+    .cloud-1 { top: 100px; left: 50px; animation: float 6s ease-in-out infinite; }
+    .cloud-2 { top: 150px; left: 200px; animation: float 8s ease-in-out infinite 1s; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="poster">
+    <div class="sun">☀️</div>
+    <div class="cloud cloud-1">☁️</div>
+    <div class="cloud cloud-2">☁️</div>
+    <div class="palm-left">🌴</div>
+    <div class="palm-right">🌴</div>
+    <div class="wave wave-1"></div>
+    <div class="wave wave-2"></div>
+    <div class="date-badge">
+      <div class="date-text">JULY 15, 2026</div>
+    </div>
+    <div class="main-text">
+      <div class="summer-text">SUMMER</div>
+      <div class="vibes-text">VIBES</div>
+      <div class="beach-emoji">🏖️ 🍹 🎉</div>
+    </div>
+    <div class="party-info">
+      <div class="info-text">Miami Beach • Live DJ • Free Drinks 8-10PM</div>
+    </div>
+    <button class="cta-btn">RSVP NOW</button>
+  </div>
+</body>
+</html>

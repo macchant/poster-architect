@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glassmorphism - Modern App Promo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+    .poster {
+      width: 800px;
+      height: 1100px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .glass-card {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 30px;
+    }
+    .card-1 { top: 80px; left: 50px; right: 50px; height: 200px; }
+    .card-2 { top: 300px; left: 50px; width: 45%; height: 300px; }
+    .card-3 { top: 300px; right: 50px; width: 45%; height: 300px; }
+    .card-4 { bottom: 80px; left: 50px; right: 50px; height: 150px; }
+    .app-icon {
+      position: absolute;
+      top: 50px;
+      left: 50px;
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #fff, #f0f0f0);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+    }
+    .app-name {
+      position: absolute;
+      top: 60px;
+      left: 150px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 28px;
+      color: white;
+    }
+    .app-tagline {
+      position: absolute;
+      top: 95px;
+      left: 150px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 300;
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+    }
+    .rating {
+      position: absolute;
+      bottom: 30px;
+      left: 50px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .stars {
+      font-size: 20px;
+      color: #ffd700;
+    }
+    .rating-text {
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      color: white;
+    }
+    .phone-mockup {
+      position: absolute;
+      top: 350px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 400px;
+      background: #111;
+      border-radius: 40px;
+      border: 8px solid #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .phone-screen {
+      width: 180px;
+      height: 370px;
+      background: linear-gradient(180deg, #667eea, #764ba2);
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 60px;
+    }
+    .feature-icon {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+    .feature-text {
+      position: absolute;
+      left: 70px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      color: white;
+      font-weight: 600;
+    }
+    .feature-desc {
+      position: absolute;
+      left: 70px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      color: rgba(255,255,255,0.6);
+    }
+    .download-btn {
+      position: absolute;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      color: #667eea;
+      border: none;
+      padding: 20px 50px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    .store-badge {
+      position: absolute;
+      bottom: 30px;
+      font-size: 20px;
+    }
+    .apple { left: 180px; }
+    .google { right: 180px; }
+  </style>
+</head>
+<body>
+  <div class="poster">
+    <div class="glass-card card-1">
+      <div class="app-icon">🚀</div>
+      <div class="app-name">TurboApp</div>
+      <div class="app-tagline">Do more, faster.</div>
+      <div class="rating">
+        <div class="stars">★★★★★</div>
+        <div class="rating-text">4.9 • 10K+ Reviews</div>
+      </div>
+    </div>
+    <div class="glass-card card-2">
+      <div class="phone-mockup">
+        <div class="phone-screen">📱</div>
+      </div>
+    </div>
+    <div class="glass-card card-3" style="display: flex; flex-direction: column; justify-content: center; padding: 30px;">
+      <div style="margin-bottom: 20px;">
+        <div class="feature-icon" style="position: relative; margin-bottom: 15px;">⚡</div>
+        <div class="feature-text" style="position: relative; left: 0;">Lightning Fast</div>
+        <div class="feature-desc" style="position: relative; left: 0;">Optimized for speed</div>
+      </div>
+      <div style="margin-bottom: 20px;">
+        <div class="feature-icon" style="position: relative; margin-bottom: 15px;">🔒</div>
+        <div class="feature-text" style="position: relative; left: 0;">Secure</div>
+        <div class="feature-desc" style="position: relative; left: 0;">Your data is safe</div>
+      </div>
+      <div>
+        <div class="feature-icon" style="position: relative; margin-bottom: 15px;">✨</div>
+        <div class="feature-text" style="position: relative; left: 0;">Beautiful UI</div>
+        <div class="feature-desc" style="position: relative; left: 0;">Designed for you</div>
+      </div>
+    </div>
+    <div class="glass-card card-4" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;">
+      <button class="download-btn">Download Now</button>
+      <div style="display: flex; gap: 30px; margin-top: 10px;">
+        <span style="font-size: 24px;">🍎</span>
+        <span style="font-size: 24px;">🤖</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Art - Gallery Exhibition Template</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #1a1a1a; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+    .poster {
+      width: 800px;
+      height: 1100px;
+      background: #0d0d0d;
+      position: relative;
+      overflow: hidden;
+    }
+    .abstract-shapes {
+      position: absolute;
+      inset: 0;
+    }
+    .shape {
+      position: absolute;
+      opacity: 0.15;
+    }
+    .shape-1 {
+      width: 300px;
+      height: 300px;
+      background: linear-gradient(135deg, #8b5cf6, #ff0066);
+      top: -50px;
+      right: -50px;
+      transform: rotate(45deg);
+    }
+    .shape-2 {
+      width: 200px;
+      height: 200px;
+      border: 3px solid #ffd700;
+      border-radius: 50%;
+      bottom: 100px;
+      left: -50px;
+    }
+    .shape-3 {
+      width: 150px;
+      height: 400px;
+      background: linear-gradient(180deg, transparent, #00ffff);
+      top: 200px;
+      right: 50px;
+    }
+    .exhibition-badge {
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 10px 30px;
+    }
+    .badge-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 8px;
+    }
+    .main-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      width: 90%;
+    }
+    .gallery-name {
+      font-family: 'Cinzel', serif;
+      font-size: 80px;
+      color: white;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    .divider {
+      width: 100px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #ffd700, transparent);
+      margin: 30px auto;
+    }
+    .exhibition-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 18px;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 5px;
+      margin-bottom: 10px;
+    }
+    .artwork-name {
+      font-family: 'Cinzel', serif;
+      font-size: 48px;
+      color: #ffd700;
+      font-style: italic;
+    }
+    .date-section {
+      position: absolute;
+      top: 75%;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+    }
+    .date-item {
+      text-align: center;
+    }
+    .date-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 3px;
+      margin-bottom: 8px;
+    }
+    .date-value {
+      font-family: 'Cinzel', serif;
+      font-size: 20px;
+      color: white;
+    }
+    .cta-text {
+      position: absolute;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      text-decoration: underline;
+      text-underline-offset: 5px;
+    }
+    .location {
+      position: absolute;
+      bottom: 40px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 3px;
+    }
+  </style>
+</head>
+<body>
+  <div class="poster">
+    <div class="abstract-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+    <div class="exhibition-badge">
+      <div class="badge-text">ART EXHIBITION</div>
+    </div>
+    <div class="main-content">
+      <div class="gallery-name">METRO<br>GALLERY</div>
+      <div class="divider"></div>
+      <div class="exhibition-title">PRESENTS</div>
+      <div class="artwork-name">"Colors of Silence"</div>
+    </div>
+    <div class="date-section">
+      <div class="date-item">
+        <div class="date-label">OPENING</div>
+        <div class="date-value">MAR 15, 2026</div>
+      </div>
+      <div class="date-item">
+        <div class="date-label">UNTIL</div>
+        <div class="date-value">APR 30, 2026</div>
+      </div>
+      <div class="date-item">
+        <div class="date-label">HOURS</div>
+        <div class="date-value">10AM - 8PM</div>
+      </div>
+    </div>
+    <div class="cta-text">View Exhibition Details</div>
+    <div class="location">123 ART MUSEUM AVE, NYC</div>
+  </div>
+</body>
+</html>

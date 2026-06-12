@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Midnight Luxe - Fashion Editorial Template</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #1a1a1a; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+    .poster {
+      width: 800px;
+      height: 1100px;
+      background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .gold-line {
+      position: absolute;
+      height: 100%;
+      width: 2px;
+      background: linear-gradient(180deg, transparent, #c9a227 20%, #c9a227 80%, transparent);
+      left: 80px;
+    }
+    .collection-title {
+      position: absolute;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 100px;
+      color: white;
+      top: 150px;
+      left: 120px;
+      line-height: 0.9;
+    }
+    .season {
+      position: absolute;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 18px;
+      color: #c9a227;
+      top: 100px;
+      left: 120px;
+      letter-spacing: 12px;
+    }
+    .elegant-line {
+      position: absolute;
+      width: 200px;
+      height: 1px;
+      background: #c9a227;
+      top: 420px;
+      left: 120px;
+    }
+    .subtitle {
+      position: absolute;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      top: 450px;
+      left: 120px;
+      letter-spacing: 3px;
+    }
+    .price-tag {
+      position: absolute;
+      top: 550px;
+      left: 120px;
+    }
+    .price-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 3px;
+    }
+    .price-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px;
+      color: #c9a227;
+    }
+    .model-silhouette {
+      position: absolute;
+      right: -50px;
+      bottom: 0;
+      width: 500px;
+      height: 700px;
+      background: linear-gradient(180deg, transparent, rgba(201, 162, 39, 0.1));
+    }
+    .model-silhouette::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 100px;
+      width: 200px;
+      height: 650px;
+      background: linear-gradient(180deg, transparent, rgba(255,255,255,0.05));
+      clip-path: polygon(30% 0%, 70% 0%, 80% 100%, 20% 100%);
+    }
+    .cta-text {
+      position: absolute;
+      bottom: 80px;
+      left: 120px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      color: white;
+      letter-spacing: 5px;
+      text-decoration: underline;
+      text-underline-offset: 5px;
+    }
+    .brand-logo {
+      position: absolute;
+      top: 40px;
+      right: 40px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      color: #c9a227;
+      letter-spacing: 8px;
+    }
+    .corner-accent {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border: 1px solid rgba(201, 162, 39, 0.3);
+    }
+    .corner-tl { top: 30px; left: 30px; border-right: none; border-bottom: none; }
+    .corner-br { bottom: 30px; right: 30px; border-left: none; border-top: none; }
+  </style>
+</head>
+<body>
+  <div class="poster">
+    <div class="gold-line"></div>
+    <div class="corner-accent corner-tl"></div>
+    <div class="corner-accent corner-br"></div>
+    <div class="brand-logo">MAISON</div>
+    <div class="season">AUTUMN / WINTER 2026</div>
+    <div class="collection-title">MIDNIGHT<br>LUXE</div>
+    <div class="elegant-line"></div>
+    <div class="subtitle">The Art of Elegant Darkness</div>
+    <div class="price-tag">
+      <div class="price-label">STARTING FROM</div>
+      <div class="price-value">$299</div>
+    </div>
+    <div class="model-silhouette"></div>
+    <div class="cta-text">EXPLORE COLLECTION</div>
+  </div>
+</body>
+</html>
